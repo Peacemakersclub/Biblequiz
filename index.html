@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#2d1b4e">
     <title>Good Way - Mark's Gospel Quiz</title>
     <style>
         * {
@@ -465,39 +466,88 @@
 </div>
 
 <script>
-    // ==================== QUESTIONS (71 with mixed answers) ====================
-    const QUESTIONS = [];
-    const baseQuestions = [
-        "In the Parable of the Sower, what do the seeds represent?|The Word of God|The disciples|The angels|The nations",
-        "In the Parable of the Sower, what does the soil represent?|The hearts of people|The fields|The kingdom|The temple",
-        "What did the voice from heaven say at Jesus' baptism?|This is my beloved Son|You are my Son|This is the chosen One|Listen to Him",
-        "Who was the father of James and John?|Zebedee|Alphaeus|Simon|Joseph",
-        "Why were people astonished at Jesus' teaching?|He taught with authority|He used parables|He performed miracles|He quoted Scripture",
-        "Who did Herod think Jesus was?|John the Baptist|Elijah|Jeremiah|A prophet",
-        "Name of Herod's brother?|Philip|Andrew|James|John",
-        "By what did the Pharisees make God's word void?|Their traditions|Their laws|Their sacrifices|Their prayers",
-        "What defiles a man?|What comes out of the heart|What goes into the body|Unwashed hands|Touching unclean things",
-        "How long did the woman with the issue of blood suffer?|12 years|18 years|8 years|20 years",
-        "Who appeared at the transfiguration?|Moses and Elijah|Abraham and Isaac|David and Solomon|Isaiah and Jeremiah"
+    // ==================== 71 REAL QUESTIONS WITH CORRECT ANSWERS ====================
+    const QUESTIONS = [
+        { text: "In the Parable of the Sower, what do the seeds represent?", options: ["The Word of God", "The disciples", "The angels", "The nations"], correct: 0 },
+        { text: "In the Parable of the Sower, what does the soil represent?", options: ["The hearts of people", "The fields", "The kingdom", "The temple"], correct: 0 },
+        { text: "What did the voice from heaven say at Jesus' baptism?", options: ["This is my beloved Son", "You are my Son", "This is the chosen One", "Listen to Him"], correct: 0 },
+        { text: "Who was the father of James and John?", options: ["Zebedee", "Alphaeus", "Simon", "Joseph"], correct: 0 },
+        { text: "Why were people astonished at Jesus' teaching?", options: ["He taught with authority", "He used parables", "He performed miracles", "He quoted Scripture"], correct: 0 },
+        { text: "Who did Herod think Jesus was?", options: ["John the Baptist", "Elijah", "Jeremiah", "A prophet"], correct: 0 },
+        { text: "Name of Herod's brother?", options: ["Philip", "Andrew", "James", "John"], correct: 0 },
+        { text: "By what did the Pharisees make God's word void?", options: ["Their traditions", "Their laws", "Their sacrifices", "Their prayers"], correct: 0 },
+        { text: "What defiles a man?", options: ["What comes out of the heart", "What goes into the body", "Unwashed hands", "Touching unclean things"], correct: 0 },
+        { text: "How long did the woman with the issue of blood suffer?", options: ["12 years", "18 years", "8 years", "20 years"], correct: 0 },
+        { text: "Who appeared at the transfiguration?", options: ["Moses and Elijah", "Abraham and Isaac", "David and Solomon", "Isaiah and Jeremiah"], correct: 0 },
+        { text: "Father of Blind Bartimaeus?", options: ["Timaeus", "Alphaeus", "Zebedee", "Simon"], correct: 0 },
+        { text: "What sin is unforgivable?", options: ["Blasphemy against the Holy Spirit", "Murder", "Adultery", "Denying Christ"], correct: 0 },
+        { text: "Which other woman went to the tomb with Mary Magdalene?", options: ["Salome", "Mary of Bethany", "Joanna", "Susanna"], correct: 0 },
+        { text: "Who said 'We have left everything and followed you'?", options: ["Peter", "James", "John", "Andrew"], correct: 0 },
+        { text: "What did the Sadducees not believe in?", options: ["The resurrection", "The Sabbath", "Tithing", "Prayer"], correct: 0 },
+        { text: "What is easier for a camel to go through?", options: ["Eye of a needle", "Gate of a city", "Eye of a camel", "Door of a house"], correct: 0 },
+        { text: "How many fish at the feeding of 5,000?", options: ["2", "3", "4", "5"], correct: 0 },
+        { text: "Who went with Jesus to the Mount of Transfiguration?", options: ["Peter, James, John", "Peter, Andrew, James", "James, John, Matthew", "Peter, John, Thomas"], correct: 0 },
+        { text: "Whose house did Jesus dine with publicans?", options: ["Levi (Matthew)", "Simon Peter", "Zacchaeus", "Jairus"], correct: 0 },
+        { text: "First prophet mentioned in Mark?", options: ["Isaiah", "Jeremiah", "Ezekiel", "Daniel"], correct: 0 },
+        { text: "Name Jesus' brothers?", options: ["James and Joses", "Peter and Andrew", "John and James", "Matthew and Thomas"], correct: 0 },
+        { text: "Who ate the showbread meant for priests?", options: ["David and his men", "Samuel", "Solomon", "Elijah"], correct: 0 },
+        { text: "High priest when David ate showbread?", options: ["Abiathar", "Caiaphas", "Annas", "Zadok"], correct: 0 },
+        { text: "Baskets left after feeding 5,000?", options: ["12", "7", "5", "10"], correct: 0 },
+        { text: "What did Jesus tell the rich young ruler?", options: ["Sell everything, give to poor", "Follow commandments", "Pray without ceasing", "Give half"], correct: 0 },
+        { text: "How many chapters in Mark?", options: ["16", "24", "21", "28"], correct: 0 },
+        { text: "Times disciples slept in Gethsemane?", options: ["3", "1", "2", "4"], correct: 0 },
+        { text: "Who ate locusts and honey?", options: ["John the Baptist", "Elijah", "Jesus", "Peter"], correct: 0 },
+        { text: "Levi's (Matthew) father?", options: ["Alphaeus", "Zebedee", "Simon", "Joseph"], correct: 0 },
+        { text: "Holy Spirit came down like a ____?", options: ["Dove", "Eagle", "Fire", "Cloud"], correct: 0 },
+        { text: "Everything asked in prayer will be yours if you have ____?", options: ["Faith", "Patience", "Hope", "Love"], correct: 0 },
+        { text: "Meaning of 'Eloi Eloi Lama Sabachtani'?", options: ["My God, why have you forsaken me?", "Father forgive them", "It is finished", "Into your hands"], correct: 0 },
+        { text: "Meaning of 'Talitha Cumi'?", options: ["Get up, young girl", "Be opened", "Be healed", "Rise and walk"], correct: 0 },
+        { text: "Whose image on the coin?", options: ["Caesar", "Tiberius", "Augustus", "Herod"], correct: 0 },
+        { text: "First two disciples called?", options: ["Peter and Andrew", "James and John", "Philip and Nathanael", "Matthew and Thomas"], correct: 0 },
+        { text: "Receive kingdom like a ____?", options: ["Little child", "Rich man", "Pharisee", "Servant"], correct: 0 },
+        { text: "Who claimed Jesus' body from Pilate?", options: ["Joseph of Arimathea", "Nicodemus", "Peter", "John"], correct: 0 },
+        { text: "Who carried Jesus' cross?", options: ["Simon of Cyrene", "Joseph", "Roman soldier", "John"], correct: 0 },
+        { text: "City where Bartimaeus healed?", options: ["Jericho", "Jerusalem", "Bethlehem", "Nazareth"], correct: 0 },
+        { text: "Who is Jesus' brother, sister, mother?", options: ["Whoever does God's will", "His disciples", "The apostles", "Believers"], correct: 0 },
+        { text: "Prophet: 'Prepare the way'?", options: ["Isaiah", "Malachi", "Jeremiah", "Ezekiel"], correct: 0 },
+        { text: "Who knows the timing of second coming?", options: ["The Father only", "The Son only", "Angels", "No one"], correct: 0 },
+        { text: "Legion lived in region of?", options: ["Gadarenes", "Galilee", "Samaria", "Judea"], correct: 0 },
+        { text: "How many pigs drowned?", options: ["2000", "1000", "500", "3000"], correct: 0 },
+        { text: "Honor me with ____ but heart far?", options: ["Lips", "Hands", "Sacrifices", "Offerings"], correct: 0 },
+        { text: "Sons of Thunder (Boanerges)?", options: ["James and John", "Peter and Andrew", "Philip and Bartholomew", "Matthew and Thomas"], correct: 0 },
+        { text: "Birds in sower parable represent?", options: ["Satan", "Angels", "Demons", "The world"], correct: 0 },
+        { text: "Jesus said to Jairus: Do not fear, only ____?", options: ["Believe", "Pray", "Wait", "Trust"], correct: 0 },
+        { text: "Miracle for Syrophoenician woman?", options: ["Healed daughter", "Healed son", "Raised child", "Gave sight"], correct: 0 },
+        { text: "Meaning of 'Ephratha'?", options: ["Be opened", "Be healed", "Arise", "Go"], correct: 0 },
+        { text: "Baskets left after feeding 4,000?", options: ["7", "12", "5", "10"], correct: 0 },
+        { text: "From whom did Jesus cast out 7 demons?", options: ["Mary Magdalene", "Mary of Bethany", "Syrophoenician woman", "Joanna"], correct: 0 },
+        { text: "Why Moses permitted divorce?", options: ["Hardness of heart", "The law", "Sin", "Unfaithfulness"], correct: 0 },
+        { text: "Divorce and remarry = ____?", options: ["Adultery", "Fornication", "Sin", "Transgression"], correct: 0 },
+        { text: "House where woman anointed Jesus?", options: ["Simon the Leper", "Jairus", "Levi", "Pharisee"], correct: 0 },
+        { text: "Value of perfume?", options: ["300 denarii", "100 denarii", "500 denarii", "200 denarii"], correct: 0 },
+        { text: "Where is prophet without honor?", options: ["Hometown", "Jerusalem", "Temple", "Gentiles"], correct: 0 },
+        { text: "'Who touched me?' Which miracle?", options: ["Woman with blood issue", "Blind man", "Leper", "Paralyzed"], correct: 0 },
+        { text: "River where John baptized?", options: ["Jordan", "Nile", "Euphrates", "Tigris"], correct: 0 },
+        { text: "John baptized with water, Jesus with ____?", options: ["Holy Spirit", "Fire", "Power", "Water and Spirit"], correct: 0 },
+        { text: "Kingdom of God like a ____ seed?", options: ["Mustard", "Wheat", "Barley", "Fig"], correct: 0 },
+        { text: "Age of Jairus' daughter?", options: ["12", "8", "10", "14"], correct: 0 },
+        { text: "Meaning of 'Corban'?", options: ["Gift dedicated to God", "Sacrifice", "Offering", "Temple tax"], correct: 0 },
+        { text: "'Get behind me Satan' to whom?", options: ["Peter", "James", "John", "Judas"], correct: 0 },
+        { text: "Stone that became cornerstone?", options: ["Stone builders rejected", "Foundation stone", "Altar stone", "Temple stone"], correct: 0 },
+        { text: "Who wanted three tabernacles?", options: ["Peter", "James", "John", "Moses"], correct: 0 },
+        { text: "Christ is whose son?", options: ["David's", "Abraham's", "Joseph's", "Adam's"], correct: 0 },
+        { text: "Who tore clothes when Jesus said He is Christ?", options: ["High Priest", "Pilate", "Herod", "Scribe"], correct: 0 },
+        { text: "Prisoner released instead of Jesus?", options: ["Barabbas", "Barnabas", "The thief", "Murderer"], correct: 0 },
+        { text: "Inscription on cross?", options: ["King of the Jews", "Son of God", "Savior", "Messiah"], correct: 0 }
     ];
-    
-    for(let i = 0; i < 71; i++) {
-        const idx = i % baseQuestions.length;
-        const parts = baseQuestions[idx].split('|');
-        QUESTIONS.push({
-            text: parts[0],
-            options: [parts[1], parts[2], parts[3], parts[4]],
-            correct: i % 4
-        });
-    }
 
-    // ==================== READING PLAN ====================
+    // ==================== READING PLAN (16 Chapters) ====================
     const CHAPTERS = [];
     for(let i = 1; i <= 16; i++) {
         CHAPTERS.push({
             num: i,
-            summary: `Chapter ${i} of Mark's Gospel continues the ministry of Jesus, His teachings, miracles, and journey toward Jerusalem.`,
-            theology: `This chapter demonstrates Jesus' authority and the growing opposition from religious leaders.`,
+            summary: `Chapter ${i} of Mark's Gospel: This chapter continues the powerful ministry of Jesus, revealing His authority, teaching, and mission to bring salvation.`,
+            theology: `This chapter demonstrates Jesus' divine authority and the growing opposition from religious leaders.`,
             keyVerse: `For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many. - Mark 10:45`
         });
     }
@@ -593,7 +643,7 @@
             document.getElementById('feedbackMsg').innerHTML = '✓ Correct! +10 points! 🎉';
             document.getElementById('feedbackMsg').className = 'feedback-msg correct';
         } else {
-            document.getElementById('feedbackMsg').innerHTML = `✗ Incorrect! Correct: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`;
+            document.getElementById('feedbackMsg').innerHTML = `✗ Incorrect! The correct answer is: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`;
             document.getElementById('feedbackMsg').className = 'feedback-msg wrong';
         }
         stats.totalAnswered++;
@@ -679,7 +729,7 @@
     // ==================== SHARE FUNCTIONS ====================
     function shareMessage(msg) {
         if(navigator.share) navigator.share({ title: 'Good Way Quiz', text: msg });
-        else alert(msg + '\n\n(Copy this message to share)');
+        else alert(msg);
     }
 
     // ==================== CERTIFICATE ====================
@@ -694,12 +744,13 @@
             <html>
             <head><title>Good Way Certificate</title>
             <style>
-                body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1035, #2d1b4e); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px; }
+                body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1035, #2d1b4e); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px; margin: 0; }
                 .cert { max-width: 800px; background: white; border: 20px solid #ffd700; border-radius: 20px; padding: 40px; text-align: center; }
-                h1 { color: #2d1b4e; font-size: 42px; }
+                h1 { color: #2d1b4e; font-size: 42px; margin-bottom: 20px; }
                 .gold { color: #ffd700; font-size: 48px; font-weight: bold; margin: 20px 0; }
-                .score { font-size: 32px; color: #5a3e8c; }
-                button { background: #5a3e8c; color: white; border: none; padding: 12px 30px; border-radius: 40px; margin: 10px; cursor: pointer; }
+                .score { font-size: 28px; color: #5a3e8c; margin: 15px 0; }
+                button { background: #5a3e8c; color: white; border: none; padding: 12px 30px; border-radius: 40px; margin: 10px; cursor: pointer; font-size: 16px; }
+                button:hover { transform: scale(1.02); }
                 @media print { button { display: none; } body { background: white; } }
             </style>
             </head>
@@ -708,13 +759,19 @@
                     <h1>🎓 Certificate of Completion</h1>
                     <p>This certifies that</p>
                     <div class="gold">${userName}</div>
-                    <p>has completed the Mark's Gospel Quiz</p>
-                    <div class="score">Score: ${finalScore}/71 | Points: ${stats.totalPoints} ⭐</div>
+                    <p>has successfully completed the</p>
+                    <h2>Mark's Gospel Quiz</h2>
+                    <div class="score">Score: ${finalScore}/71</div>
+                    <div class="score">Points: ${stats.totalPoints} ⭐</div>
                     <div>Level: ${level}</div>
-                    <p>Date: ${date}</p>
-                    <div style="margin-top: 30px;">Mr Addis Abebayehu</div>
+                    <p style="margin: 20px 0;">Date: ${date}</p>
+                    <div style="margin-top: 30px;">_________________________</div>
+                    <div>Mr Addis Abebayehu</div>
                     <div>Developer | Good Way App</div>
-                    <div><button onclick="window.print()">🖨️ Print / Save PDF</button><button onclick="window.close()">Close</button></div>
+                    <div>
+                        <button onclick="window.print()">🖨️ Print / Save PDF</button>
+                        <button onclick="window.close()">Close</button>
+                    </div>
                 </div>
             </body>
             </html>
@@ -734,7 +791,8 @@
         document.getElementById(pageId).classList.remove('hidden');
         
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`[data-page="${pageId === 'homePage' ? 'home' : pageId === 'quizPage' ? 'quiz' : pageId === 'readingPage' ? 'reading' : pageId === 'statsPage' ? 'stats' : 'about'}"]`).classList.add('active');
+        const pageMap = { homePage: 'home', quizPage: 'quiz', readingPage: 'reading', statsPage: 'stats', aboutPage: 'about' };
+        document.querySelector(`[data-page="${pageMap[pageId]}"]`).classList.add('active');
         
         if(pageId === 'readingPage') displayReadingPlan();
         if(pageId === 'quizPage') resetQuiz();
@@ -743,11 +801,11 @@
     // ==================== EVENT LISTENERS ====================
     document.getElementById('startQuiz').onclick = () => showPage('quizPage');
     document.getElementById('shareVerse').onclick = () => shareMessage(`📖 Verse: "${document.getElementById('verseText').innerText}"`);
-    document.getElementById('shareReading').onclick = () => { const c = readingProgress.filter(v=>v).length; shareMessage(`📖 I've completed ${c}/16 chapters of Mark's Gospel!`); };
-    document.getElementById('shareAchievement').onclick = () => shareMessage(`🕊️ I scored ${currentScore}/71 on Mark's Gospel Quiz! Level: ${getLevel(currentPoints)}`);
+    document.getElementById('shareReading').onclick = () => { const c = readingProgress.filter(v=>v).length; shareMessage(`📖 I've completed ${c}/16 chapters of Mark's Gospel reading plan! Join me!`); };
+    document.getElementById('shareAchievement').onclick = () => shareMessage(`🕊️ Good Way Quiz!\n\nI scored ${currentScore}/71 on Mark's Gospel Quiz!\nLevel: ${getLevel(currentPoints)}\n\nTest your knowledge!`);
     document.getElementById('getCertificate').onclick = showCertificate;
     document.getElementById('closeResults').onclick = () => { document.getElementById('resultsModal').classList.add('hidden'); showPage('homePage'); };
-    document.getElementById('resetStats').onclick = () => { if(confirm('Reset all stats?')) { stats = { totalAnswered:0, correctAnswers:0, bestScore:0, totalPoints:0 }; localStorage.setItem('gwStats', JSON.stringify(stats)); updateAllDisplays(); alert('Stats reset!'); } };
+    document.getElementById('resetStats').onclick = () => { if(confirm('Reset all statistics?')) { stats = { totalAnswered:0, correctAnswers:0, bestScore:0, totalPoints:0 }; localStorage.setItem('gwStats', JSON.stringify(stats)); updateAllDisplays(); alert('Statistics reset!'); } };
     
     // Read Verse
     document.getElementById('readVerse').onclick = () => {
@@ -758,13 +816,14 @@
             localStorage.setItem('verseRead', today);
             updateAllDisplays();
             alert('✨ +5 Points!');
-        } else alert('Already claimed today!');
+        } else alert('You already claimed today\'s points!');
     };
 
     // Daily Verse
     const verses = [
         { text: "The beginning of the gospel of Jesus Christ, the Son of God.", ref: "Mark 1:1" },
-        { text: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many.", ref: "Mark 10:45" }
+        { text: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many.", ref: "Mark 10:45" },
+        { text: "Trust in the Lord with all thine heart; and lean not unto thine own understanding.", ref: "Proverbs 3:5" }
     ];
     const today = new Date().toDateString();
     let vIdx = localStorage.getItem('verseIdx') || 0;
@@ -796,7 +855,7 @@
     }
 
     // Amharic
-    document.getElementById('btnAm').onclick = () => alert('አማርኛ ትርጉም በቅርቡ ይጨመራል!');
+    document.getElementById('btnAm').onclick = () => alert('አማርኛ ትርጉም በቅርቡ ይጨመራል! / Amharic translation coming soon!');
 
     // Initialize
     updateStreak();
