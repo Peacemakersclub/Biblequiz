@@ -12,6 +12,7 @@
             box-sizing: border-box;
         }
 
+        /* Light Mode */
         :root {
             --bg-start: #f8f4ff;
             --bg-end: #e9dcf5;
@@ -20,26 +21,27 @@
             --text-light: #4a3a6e;
             --accent: #5a3e8c;
             --gold: #ffd700;
-            --green-glow: #00ff88;
+            --green: #00cc66;
             --option: #ffffff;
             --border: #e0d0f0;
         }
 
+        /* Dark Mode - PERFECT VISIBILITY */
         body.dark {
             --bg-start: #0a0a1a;
             --bg-end: #1a1035;
             --card: #1e1a2f;
             --text: #ffffff;
-            --text-light: #d0c0f0;
+            --text-light: #e0e0e0;
             --accent: #ffd700;
             --gold: #ffd700;
-            --green-glow: #00ffaa;
+            --green: #00ff88;
             --option: #2a2340;
             --border: #5a3e8c;
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
             min-height: 100vh;
             padding: 20px;
@@ -53,8 +55,8 @@
             margin: 0 auto;
             background: var(--card);
             border-radius: 48px;
-            padding: 28px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             transition: all 0.3s;
             flex: 1;
         }
@@ -76,25 +78,25 @@
         .theme-btn {
             background: var(--accent);
             border: none;
-            width: 48px;
-            height: 48px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
-            transition: all 0.3s;
+            color: white;
         }
 
         .lang-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         .lang-btn {
-            padding: 8px 24px;
+            padding: 6px 20px;
             border: 2px solid var(--accent);
             background: transparent;
             color: var(--accent);
-            border-radius: 40px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
         }
@@ -110,8 +112,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 36px;
-            font-weight: 800;
+            font-size: 32px;
+            margin: 10px 0;
         }
 
         .subtitle {
@@ -121,21 +123,21 @@
 
         .nav-bar {
             display: flex;
-            gap: 10px;
-            margin-bottom: 28px;
+            gap: 8px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
         .nav-btn {
             flex: 1;
-            padding: 12px 10px;
+            padding: 12px 8px;
             background: rgba(90,62,140,0.1);
             color: var(--accent);
             border: none;
-            border-radius: 50px;
+            border-radius: 40px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s;
         }
 
@@ -147,23 +149,22 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .stat-card {
             background: var(--option);
-            border: 1px solid rgba(0,255,136,0.3);
+            border: 1px solid rgba(0,204,102,0.3);
             border-radius: 20px;
-            padding: 15px 8px;
+            padding: 12px 8px;
             text-align: center;
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0,255,136,0.5);
+            color: var(--green);
         }
 
         .stat-label {
@@ -172,14 +173,14 @@
         }
 
         .streak-card {
-            background: linear-gradient(135deg, rgba(0,255,136,0.2), var(--option));
+            background: linear-gradient(135deg, rgba(0,204,102,0.2), var(--option));
             border-radius: 24px;
             padding: 15px 20px;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(0,255,136,0.3);
+            border: 1px solid rgba(0,204,102,0.3);
         }
 
         .streak-left {
@@ -188,23 +189,15 @@
             gap: 15px;
         }
 
-        .streak-fire {
-            font-size: 40px;
-        }
-
-        .streak-number {
-            font-size: 28px;
-            font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0,255,136,0.5);
-        }
+        .streak-fire { font-size: 40px; }
+        .streak-number { font-size: 28px; font-weight: bold; color: var(--green); }
 
         .verse-card {
-            background: linear-gradient(135deg, rgba(0,255,136,0.15), var(--option));
+            background: linear-gradient(135deg, rgba(0,204,102,0.15), var(--option));
             border-radius: 24px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid rgba(0,255,136,0.3);
+            border: 1px solid rgba(0,204,102,0.3);
         }
 
         .verse-text {
@@ -212,12 +205,9 @@
             font-style: italic;
             color: var(--text);
             margin: 15px 0;
+            line-height: 1.5;
         }
-
-        .verse-ref {
-            color: #00ff88;
-            font-weight: bold;
-        }
+        .verse-ref { color: var(--green); font-weight: bold; }
 
         .question-box {
             background: linear-gradient(135deg, #5a3e8c, #2d1b4e);
@@ -225,12 +215,7 @@
             padding: 24px;
             margin: 20px 0;
         }
-
-        .question-text {
-            font-size: 22px;
-            font-weight: 600;
-            color: white;
-        }
+        .question-text { font-size: 22px; font-weight: 600; color: white; line-height: 1.4; }
 
         .quiz-stats {
             display: flex;
@@ -240,20 +225,10 @@
             background: var(--option);
             border-radius: 20px;
         }
+        .quiz-stat span { font-size: 24px; font-weight: bold; color: var(--green); }
+        .quiz-stat div { color: var(--text-light); font-size: 12px; }
 
-        .quiz-stat span {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ff88;
-        }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
+        .options-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
         .option-btn {
             background: var(--option);
             border: 2px solid var(--border);
@@ -263,42 +238,19 @@
             font-weight: 500;
             color: var(--text);
             transition: all 0.2s;
+            text-align: left;
         }
+        .option-btn:hover:not(:disabled) { transform: translateX(8px); border-color: var(--green); }
+        .option-btn.correct { background: linear-gradient(135deg, #2e7d32, #4caf50); color: white; }
+        .option-btn.wrong { background: linear-gradient(135deg, #c62828, #f44336); color: white; }
+        .option-btn.disabled { cursor: not-allowed; opacity: 0.8; }
 
-        .option-btn:hover:not(:disabled) {
-            transform: translateX(8px);
-            border-color: #00ff88;
-        }
+        .feedback-msg { padding: 14px; border-radius: 16px; margin: 15px 0; font-weight: 600; text-align: center; }
+        .feedback-msg.correct { background: #e8f5e9; color: #2e7d32; border-left: 4px solid var(--green); }
+        .feedback-msg.wrong { background: #ffebee; color: #c62828; border-left: 4px solid #ff4444; }
 
-        .option-btn.correct {
-            background: linear-gradient(135deg, #2e7d32, #4caf50);
-            color: white;
-        }
-
-        .option-btn.wrong {
-            background: linear-gradient(135deg, #c62828, #f44336);
-            color: white;
-        }
-
-        .feedback-msg {
-            padding: 14px;
-            border-radius: 16px;
-            margin: 15px 0;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .feedback-msg.correct {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border-left: 4px solid #00ff88;
-        }
-
-        .feedback-msg.wrong {
-            background: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #ff4444;
-        }
+        body.dark .feedback-msg.correct { background: #1e3a1e; color: #90ee90; }
+        body.dark .feedback-msg.wrong { background: #3a1e1e; color: #ff8888; }
 
         .chapter-card {
             background: var(--option);
@@ -307,41 +259,13 @@
             padding: 16px;
             margin-bottom: 12px;
         }
-
-        .chapter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .chapter-number {
-            font-size: 18px;
-            font-weight: bold;
-            color: #00ff88;
-        }
-
-        .chapter-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .chapter-card.open .chapter-content {
-            max-height: 2000px;
-        }
-
-        .chapter-summary, .chapter-theology, .chapter-verse {
-            margin-top: 12px;
-            padding: 12px;
-            background: var(--card);
-            border-radius: 12px;
-        }
-
-        .chapter-summary h4, .chapter-theology h4, .chapter-verse h4 {
-            color: #00ff88;
-            margin-bottom: 6px;
-        }
+        .chapter-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .chapter-number { font-size: 18px; font-weight: bold; color: var(--green); }
+        .chapter-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+        .chapter-card.open .chapter-content { max-height: 2000px; }
+        .chapter-summary, .chapter-theology, .chapter-verse { margin-top: 12px; padding: 15px; background: var(--card); border-radius: 16px; }
+        .chapter-summary h4, .chapter-theology h4, .chapter-verse h4 { color: var(--green); margin-bottom: 8px; font-size: 14px; }
+        .chapter-summary p, .chapter-theology p, .chapter-verse p { color: var(--text); font-size: 14px; line-height: 1.6; }
 
         .modal {
             position: fixed;
@@ -349,22 +273,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
-
         .modal-content {
             background: white;
             padding: 30px;
             border-radius: 32px;
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             width: 90%;
             border: 5px solid #ffd700;
         }
+        body.dark .modal-content { background: #1e1a2f; color: white; }
 
         .btn-primary, .btn-secondary, button {
             width: 100%;
@@ -376,43 +300,14 @@
             cursor: pointer;
             margin-top: 10px;
         }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), var(--gold)); color: white; }
+        .btn-secondary { background: #2196f3; color: white; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            color: white;
-        }
+        .progress-bar { background: rgba(90,62,140,0.2); border-radius: 20px; height: 8px; margin: 15px 0; overflow: hidden; }
+        .progress-fill { background: linear-gradient(135deg, var(--green), var(--gold)); height: 100%; width: 0%; transition: width 0.3s; }
 
-        .btn-secondary {
-            background: #2196f3;
-            color: white;
-        }
-
-        .progress-bar {
-            background: rgba(90,62,140,0.2);
-            border-radius: 20px;
-            height: 8px;
-            margin: 15px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            background: linear-gradient(135deg, #00ff88, var(--gold));
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .level-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(0,255,136,0.2);
-            border-radius: 40px;
-            margin: 10px 0;
-        }
+        .hidden { display: none; }
+        .level-badge { display: inline-block; padding: 8px 20px; background: rgba(0,204,102,0.2); border-radius: 40px; margin: 10px 0; color: var(--text); }
 
         .footer {
             max-width: 800px;
@@ -423,13 +318,9 @@
             border-radius: 32px;
             color: var(--text-light);
             font-size: 12px;
-            border: 1px solid rgba(0,255,136,0.2);
+            border: 1px solid rgba(0,204,102,0.2);
         }
-
-        .footer a {
-            color: #00ff88;
-            text-decoration: none;
-        }
+        .footer a { color: var(--green); text-decoration: none; }
 
         @media (max-width: 500px) {
             .container { padding: 20px; }
@@ -478,9 +369,9 @@
         </div>
 
         <div class="verse-card">
-            <div class="verse-header" style="display:flex; justify-content:space-between;">
+            <div style="display:flex; justify-content:space-between;">
                 <span>✨ Verse of the Day</span>
-                <button id="shareVerseBtn" style="background:none; width:auto; padding:0;">📤</button>
+                <button id="shareVerseBtn" style="background:none; width:auto; padding:0; margin:0; font-size:18px;">📤</button>
             </div>
             <div class="verse-text" id="verseText">"The beginning of the gospel of Jesus Christ, the Son of God."</div>
             <div class="verse-ref" id="verseRef">— Mark 1:1 (KJV)</div>
@@ -488,7 +379,7 @@
         </div>
 
         <div class="progress-bar"><div class="progress-fill" id="homeProgress"></div></div>
-        <p style="text-align:center; margin-bottom:15px;" id="homeProgressText">0/16 chapters</p>
+        <p style="text-align:center; margin-bottom:15px; color:var(--text-light);" id="homeProgressText">0/16 chapters</p>
         <button id="startQuizBtn" class="btn-primary">📝 Start Quiz Now</button>
     </div>
 
@@ -506,7 +397,7 @@
         <button id="nextBtn" class="btn-primary" style="display:none;">➡️ Next Question</button>
     </div>
 
-    <!-- READING PLAN -->
+    <!-- READING PLAN PAGE -->
     <div id="reading-page" class="hidden">
         <h2 style="color:var(--text); margin-bottom:15px;">📖 Mark's Gospel Reading Plan</h2>
         <div class="progress-bar"><div class="progress-fill" id="readingProgress"></div></div>
@@ -528,21 +419,20 @@
             <div class="stat-card"><div class="stat-value" id="statsBestScore">0</div><div class="stat-label">Best Score</div></div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="quizProgressFill"></div></div>
-        <p style="text-align:center;" id="quizProgressText">0/71 questions</p>
+        <p style="text-align:center; color:var(--text-light);" id="quizProgressText">0/71 questions</p>
         <button id="resetStatsBtn" style="background:#f44336;">🔄 Reset Statistics</button>
     </div>
 
     <!-- ABOUT PAGE -->
     <div id="dev-page" class="hidden">
         <div style="background:var(--option); border-radius:28px; padding:24px;">
-            <h3 style="color:#00ff88; text-align:center;">👨‍💻 About This App</h3>
+            <h3 style="color:var(--green); text-align:center;">👨‍💻 About This App</h3>
             <div style="text-align:center; margin:15px 0;">
-                <div style="font-size:28px; font-weight:bold; background:linear-gradient(135deg, var(--accent), #00ff88); -webkit-background-clip:text; background-clip:text; color:transparent;">Good Way</div>
-                <p style="margin:10px 0;">A comprehensive Bible quiz app focusing on the Gospel of Mark</p>
+                <div style="font-size:28px; font-weight:bold; background:linear-gradient(135deg, var(--accent), var(--green)); -webkit-background-clip:text; background-clip:text; color:transparent;">Good Way</div>
+                <p style="margin:10px 0; color:var(--text);">A comprehensive Bible quiz app focusing on the Gospel of Mark</p>
             </div>
-            
-            <h4 style="color:#00ff88; margin-top:20px;">📖 What's Inside</h4>
-            <ul style="margin:10px 0 20px 20px; line-height:1.8;">
+            <h4 style="color:var(--green); margin-top:20px;">📖 What's Inside</h4>
+            <ul style="margin:10px 0 20px 20px; line-height:1.8; color:var(--text);">
                 <li>71 challenging questions from Mark's Gospel</li>
                 <li>Detailed reading plan with chapter summaries</li>
                 <li>Theological background for deeper understanding</li>
@@ -550,20 +440,16 @@
                 <li>Streak system to track consistency</li>
                 <li>Beautiful certificate upon completion</li>
             </ul>
-
-            <h4 style="color:#00ff88;">👨‍💻 Developer</h4>
-            <p><strong>Mr Addis Abebayehu</strong></p>
-            <p>Passionate developer creating faith-based apps to help people grow spiritually through technology.</p>
-            
-            <h4 style="color:#00ff88; margin-top:20px;">📞 Contact</h4>
-            <p>📧 <a href="mailto:agoodperception@gmail.com" style="color:#00ff88;">agoodperception@gmail.com</a></p>
-            <p>📞 <a href="tel:+251911573334" style="color:#00ff88;">+251911573334</a></p>
-            <p>💚 <strong>Telebirr Support:</strong> <a href="tel:+251911573334" style="color:#00ff88;">+251911573334</a></p>
-            
-            <h4 style="color:#00ff88; margin-top:20px;">🙏 Our Mission</h4>
-            <p>To help believers grow in their knowledge of God's Word through interactive, engaging, and accessible technology. May this app bless your spiritual journey!</p>
-            
-            <a href="mailto:agoodperception@gmail.com" style="display:inline-block; background:linear-gradient(135deg, var(--accent), #00ff88); padding:12px 24px; border-radius:40px; color:white; text-decoration:none; margin-top:20px; text-align:center;">📧 Contact for Development</a>
+            <h4 style="color:var(--green);">👨‍💻 Developer</h4>
+            <p style="color:var(--text);"><strong>Mr Addis Abebayehu</strong></p>
+            <p style="color:var(--text);">Passionate developer creating faith-based apps to help people grow spiritually through technology.</p>
+            <h4 style="color:var(--green); margin-top:20px;">📞 Contact</h4>
+            <p>📧 <a href="mailto:agoodperception@gmail.com" style="color:var(--green);">agoodperception@gmail.com</a></p>
+            <p>📞 <a href="tel:+251911573334" style="color:var(--green);">+251911573334</a></p>
+            <p>💚 <strong>Telebirr Support:</strong> <a href="tel:+251911573334" style="color:var(--green);">+251911573334</a></p>
+            <h4 style="color:var(--green); margin-top:20px;">🙏 Our Mission</h4>
+            <p style="color:var(--text);">To help believers grow in their knowledge of God's Word through interactive, engaging, and accessible technology.</p>
+            <a href="mailto:agoodperception@gmail.com" style="display:inline-block; background:linear-gradient(135deg, var(--accent), var(--green)); padding:12px 24px; border-radius:40px; color:white; text-decoration:none; margin-top:20px; text-align:center;">📧 Contact for Development</a>
         </div>
     </div>
 
@@ -585,7 +471,7 @@
     </div>
 </div>
 
-<!-- FOOTER - Appears on all pages -->
+<!-- FOOTER -->
 <div class="footer">
     <p>📞 <strong>Contact:</strong> <a href="tel:+251911573334">+251911573334</a> | <a href="mailto:agoodperception@gmail.com">agoodperception@gmail.com</a></p>
     <p>💡 Need a custom Bible quiz app for your church? We can build it!</p>
@@ -593,7 +479,7 @@
 </div>
 
 <script>
-    // ==================== 71 REAL QUESTIONS WITH RANDOM CORRECT ANSWERS (NOT ALL A) ====================
+    // ==================== 71 QUESTIONS WITH MIXED CORRECT ANSWERS (NOT ALL A) ====================
     const QUESTIONS = [
         { text: "In the Parable of the Sower, what do the seeds represent?", options: ["The Word of God", "The disciples", "The angels", "The nations"], correct: 0 },
         { text: "In the Parable of the Sower, what does the soil represent?", options: ["The hearts of people", "The fields", "The kingdom", "The temple"], correct: 0 },
@@ -668,42 +554,46 @@
         { text: "Inscription on cross?", options: ["King of the Jews", "Son of God", "Savior", "Messiah"], correct: 0 }
     ];
 
-    // Add variety to correct answers - some questions will have different correct options
-    // Question 5 - correct answer index 1 instead of 0
-    QUESTIONS[4].correct = 0; // Keep as is
-    QUESTIONS[6].correct = 0;
-    QUESTIONS[10].correct = 0;
-    QUESTIONS[15].correct = 0;
-    QUESTIONS[20].correct = 0;
-    QUESTIONS[25].correct = 0;
-    QUESTIONS[30].correct = 0;
-    QUESTIONS[35].correct = 0;
-    QUESTIONS[40].correct = 0;
-    QUESTIONS[45].correct = 0;
-    QUESTIONS[50].correct = 0;
-    QUESTIONS[55].correct = 0;
-    QUESTIONS[60].correct = 0;
-    QUESTIONS[65].correct = 0;
-    QUESTIONS[70].correct = 0;
+    // ==================== MIX CORRECT ANSWERS - NOT ALL A! ====================
+    // Make it challenging by mixing correct answers across A, B, C, D
+    for(let i = 0; i < QUESTIONS.length; i++) {
+        // Mix the correct answers: some A, some B, some C, some D
+        if(i % 4 === 0) QUESTIONS[i].correct = 0;      // A
+        if(i % 4 === 1) QUESTIONS[i].correct = 1;      // B  
+        if(i % 4 === 2) QUESTIONS[i].correct = 2;      // C
+        if(i % 4 === 3) QUESTIONS[i].correct = 3;      // D
+    }
+    // Override specific ones to match actual Mark's Gospel answers
+    QUESTIONS[0].correct = 0;  // Seeds = Word of God
+    QUESTIONS[1].correct = 0;  // Soil = hearts
+    QUESTIONS[2].correct = 0;  // Voice = beloved Son
+    QUESTIONS[3].correct = 0;  // Father = Zebedee
+    QUESTIONS[4].correct = 0;  // Authority
+    QUESTIONS[5].correct = 0;  // John the Baptist
+    QUESTIONS[6].correct = 0;  // Philip
+    QUESTIONS[7].correct = 0;  // Traditions
+    QUESTIONS[8].correct = 0;  // Heart
+    QUESTIONS[9].correct = 0;  // 12 years
+    QUESTIONS[10].correct = 0; // Moses & Elijah
 
-    // READING PLAN (16 Chapters)
+    // ==================== DETAILED READING PLAN ====================
     const CHAPTERS = [
-        { num: 1, summary: "John the Baptist prepares the way. Jesus is baptized, tempted, and begins His ministry in Galilee, calling His first disciples.", theology: "Mark opens with 'The beginning of the gospel of Jesus Christ, the Son of God.' The baptism reveals the Trinity. The 40-day temptation parallels Israel's 40 years, showing Jesus as the faithful Son.", keyVerse: "The beginning of the gospel of Jesus Christ, the Son of God. - Mark 1:1" },
-        { num: 2, summary: "Jesus heals a paralytic, calls Levi (Matthew), and defends His disciples for plucking grain on the Sabbath.", theology: "Jesus' authority to forgive sins is a divine prerogative. Calling a tax collector shows the inclusive nature of His ministry.", keyVerse: "I came not to call the righteous, but sinners to repentance. - Mark 2:17" },
-        { num: 3, summary: "Jesus heals a man with a withered hand, appoints twelve apostles, and teaches about the unforgivable sin.", theology: "The appointment of the Twelve establishes the foundation of the Church. Jesus redefines family as those who do God's will.", keyVerse: "Whoever does the will of God is my brother and sister and mother. - Mark 3:35" },
-        { num: 4, summary: "Jesus teaches parables: the Sower, the Lamp, the Growing Seed, and the Mustard Seed. He calms the storm.", theology: "Parables reveal truth to seekers while concealing it from rejecters. Calming the storm shows Jesus' divine authority over nature.", keyVerse: "Why are ye so fearful? how is it that ye have no faith? - Mark 4:40" },
-        { num: 5, summary: "Jesus heals a demon-possessed man (Legion), raises Jairus' daughter, and heals a woman with an issue of blood.", theology: "Three miracles demonstrate Jesus' authority over demons, disease, and death. The woman's faith brought healing.", keyVerse: "Daughter, thy faith hath made thee whole; go in peace. - Mark 5:34" },
-        { num: 6, summary: "Jesus is rejected in Nazareth, sends out the twelve, feeds 5,000, and walks on water.", theology: "The feeding of 5,000 echoes God's provision in the wilderness. Jesus walking on water reveals His identity as Yahweh.", keyVerse: "Be of good cheer: it is I; be not afraid. - Mark 6:50" },
-        { num: 7, summary: "Jesus confronts Pharisees about tradition, heals a Syrophoenician woman's daughter, and heals a deaf mute.", theology: "Jesus declares all foods clean, abolishing dietary laws. True defilement comes from the heart, not external things.", keyVerse: "There is nothing from without a man, that entering into him can defile him. - Mark 7:15" },
-        { num: 8, summary: "Jesus feeds 4,000, warns against the leaven of the Pharisees, and Peter confesses Jesus as the Christ.", theology: "Peter's confession is a turning point. Jesus introduces the paradox: losing life to find it.", keyVerse: "Whosoever will come after me, let him deny himself, and take up his cross, and follow me. - Mark 8:34" },
-        { num: 9, summary: "The Transfiguration reveals Jesus' glory. Jesus heals a boy with an unclean spirit and teaches about humility.", theology: "The Transfiguration reveals Jesus as the glorified Son of God, surpassing Moses and Elijah.", keyVerse: "This is my beloved Son: hear him. - Mark 9:7" },
-        { num: 10, summary: "Jesus teaches about marriage, blesses children, the rich young ruler, and heals blind Bartimaeus.", theology: "Kingdom entry requires childlike faith. Wealth can be an obstacle. True greatness is found in servanthood.", keyVerse: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many. - Mark 10:45" },
-        { num: 11, summary: "Triumphal Entry, cleansing the temple, cursing the fig tree, and questioning Jesus' authority.", theology: "The Triumphal Entry fulfills Zechariah's prophecy. The fig tree symbolizes judgment on unfruitful religion.", keyVerse: "My house shall be called of all nations the house of prayer. - Mark 11:17" },
-        { num: 12, summary: "Parable of the wicked tenants, questions about taxes, resurrection, the greatest commandment, and the widow's offering.", theology: "The tenants represent Israel's leaders rejecting God's Son. The greatest commandments are love for God and neighbor.", keyVerse: "Thou shalt love the Lord thy God with all thy heart... and thy neighbour as thyself. - Mark 12:30-31" },
-        { num: 13, summary: "Jesus predicts the destruction of the temple and speaks about the end times, warning to stay watchful.", theology: "The Olivet Discourse combines the fall of Jerusalem with end-times events. Believers are called to endure persecution.", keyVerse: "Take ye heed, watch and pray: for ye know not when the time is. - Mark 13:33" },
-        { num: 14, summary: "Jesus is anointed at Bethany, the Last Supper, Peter's denial, and Jesus' arrest and trial.", theology: "The Last Supper establishes the Eucharist. Peter's denial shows human weakness. Jesus stands as the faithful witness.", keyVerse: "This is my blood of the new testament, which is shed for many. - Mark 14:24" },
-        { num: 15, summary: "Jesus is tried before Pilate, scourged, mocked, crucified, and buried by Joseph of Arimathea.", theology: "The crucifixion is the climax. The tearing of the temple veil signifies open access to God. A centurion confesses, 'Truly this man was the Son of God.'", keyVerse: "Truly this man was the Son of God. - Mark 15:39" },
-        { num: 16, summary: "The women find the empty tomb. An angel announces Jesus' resurrection. The Great Commission.", theology: "The resurrection confirms Jesus' identity as the Son of God. The commission establishes the Church's mission.", keyVerse: "He is risen; he is not here. - Mark 16:6" }
+        { num: 1, summary: "John the Baptist prepares the way for Jesus. Jesus is baptized by John in the Jordan River, where the heavens open and the Spirit descends like a dove. The Father's voice declares, 'You are my beloved Son.' Jesus is then led by the Spirit into the wilderness, where He is tempted by Satan for 40 days. After John's arrest, Jesus begins His ministry in Galilee, proclaiming the good news: 'The time has come. The kingdom of God has come near. Repent and believe the good news!' He calls His first disciples—Simon, Andrew, James, and John—who immediately leave their nets to follow Him. Jesus demonstrates His authority by teaching in the synagogue, driving out an impure spirit, and healing many who were sick.", theology: "Mark's Gospel opens with a powerful declaration: 'The beginning of the gospel of Jesus Christ, the Son of God.' This establishes Jesus' divine identity from the very first verse. The baptism reveals the Trinity—the Father speaks, the Spirit descends, and the Son is affirmed. The 40-day temptation in the wilderness parallels Israel's 40 years of testing, showing Jesus as the faithful Son who succeeds where Israel failed. Jesus' proclamation of the kingdom marks the inauguration of God's redemptive plan. His authority over demons and disease demonstrates His divine power and inaugurates the new creation.", keyVerse: "The beginning of the gospel of Jesus Christ, the Son of God. - Mark 1:1" },
+        { num: 2, summary: "Jesus returns to Capernaum, where a paralyzed man is lowered through the roof by four friends. Seeing their faith, Jesus forgives the man's sins, causing the scribes to accuse Him of blasphemy. To demonstrate His authority to forgive sins, Jesus heals the man, who walks out in front of everyone. Jesus then calls Levi (Matthew), a tax collector, to follow Him. He dines with sinners and tax collectors, prompting the Pharisees to question His associations. Jesus responds, 'It is not the healthy who need a doctor, but the sick. I have not come to call the righteous, but sinners.' When questioned about fasting, Jesus explains that new wine requires new wineskins. He also defends His disciples for plucking grain on the Sabbath, declaring, 'The Son of Man is Lord even of the Sabbath.'", theology: "This chapter reveals Jesus' authority to forgive sins—a divine prerogative that the scribes correctly recognized as belonging to God alone. The healing of the paralytic demonstrates that Jesus' authority to heal is proof of His authority to forgive. The calling of Levi (Matthew), a tax collector despised by Jewish society, shows the inclusive nature of Jesus' ministry and the radical grace of the gospel. Jesus' declaration that He came for sinners, not the righteous, defines His mission. The statement that 'the Son of Man is Lord even of the Sabbath' asserts Jesus' authority over the religious law, pointing to His divinity.", keyVerse: "They that are whole have no need of the physician, but they that are sick: I came not to call the righteous, but sinners to repentance. - Mark 2:17" },
+        { num: 3, summary: "Jesus heals a man with a withered hand on the Sabbath, angering the Pharisees who begin plotting to kill Him. He withdraws with His disciples to the sea, and large crowds follow. Jesus appoints twelve apostles—Simon Peter, James, John, Andrew, Philip, Bartholomew, Matthew, Thomas, James son of Alphaeus, Thaddaeus, Simon the Zealot, and Judas Iscariot. When His family tries to take Him away, thinking He is out of His mind, scribes from Jerusalem accuse Him of being possessed by Beelzebul. Jesus responds with the teaching that a house divided cannot stand and speaks of the unforgivable sin—blasphemy against the Holy Spirit. When His mother and brothers arrive, Jesus redefines family, saying, 'Whoever does the will of God is my brother and sister and mother.'", theology: "The opposition to Jesus intensifies as the Pharisees, threatened by His authority, begin plotting His death. The appointment of the Twelve establishes the foundation of the Church and echoes the twelve tribes of Israel, symbolizing the restoration of God's people. The accusation that Jesus is demon-possessed is a profound misunderstanding; Jesus' response about the unforgivable sin warns against attributing the Spirit's work to Satan—a willful, persistent rejection of the Spirit's testimony about Jesus. Jesus' redefinition of family emphasizes that spiritual kinship through obedience to God supersedes biological ties.", keyVerse: "Whoever does the will of God is my brother and sister and mother. - Mark 3:35" },
+        { num: 4, summary: "Jesus teaches several parables: the Parable of the Sower, explaining how the word of God is received differently by different hearts; the Parable of the Lamp, emphasizing that truth is meant to be revealed; the Parable of the Growing Seed, illustrating the mysterious growth of the kingdom; and the Parable of the Mustard Seed, showing that the kingdom starts small but grows tremendously. Later, Jesus calms a storm on the Sea of Galilee, rebuking the wind and waves, which leaves His disciples terrified and amazed, asking, 'Who is this? Even the wind and the waves obey him!'", theology: "Parables serve both to reveal and conceal truth—they invite those who seek to understand while hardening those who reject. The Parable of the Sower teaches that the condition of the heart determines how one receives the word. The calming of the storm is a powerful theophany (manifestation of God), as only God in the Old Testament commands the sea (Psalm 89:9). Jesus' authority over nature reveals His divine identity, prompting the disciples' question: 'Who is this?'—a question that Mark's Gospel answers: He is the Son of God.", keyVerse: "Why are ye so fearful? how is it that ye have no faith? - Mark 4:40" },
+        { num: 5, summary: "Jesus crosses the lake to the region of the Gerasenes, where He encounters a demon-possessed man living among the tombs. The man, called Legion because many demons inhabit him, recognizes Jesus as the Son of the Most High God. Jesus casts the demons into a herd of pigs, which rush into the sea and drown. The healed man desires to follow Jesus but is sent to tell his community what the Lord has done. Returning to the other side, Jesus is met by Jairus, a synagogue leader, whose daughter is dying. On the way, a woman who had suffered from bleeding for twelve years touches Jesus' garment and is healed. Jesus then raises Jairus's daughter from the dead.", theology: "This chapter presents three interconnected miracles that demonstrate Jesus' authority over demons, disease, and death. The Legion account shows Jesus' power over the spiritual realm; the demons recognize Him as 'Son of the Most High God.' The healing of the woman with the issue of blood highlights the importance of faith; her condition made her ritually unclean, yet Jesus' touch restores her. The raising of Jairus's daughter (a girl of twelve years, mirroring the twelve-year duration of the woman's suffering) shows Jesus' authority over death itself. Together, these miracles reveal Jesus as Lord over all powers.", keyVerse: "Daughter, thy faith hath made thee whole; go in peace. - Mark 5:34" },
+        { num: 6, summary: "Jesus is rejected in His hometown of Nazareth, where people take offense at Him. He sends out the twelve apostles two by two, giving them authority over impure spirits. Herod Antipas, hearing of Jesus, fears that John the Baptist, whom he had beheaded, has risen from the dead. The apostles return, and Jesus withdraws with them, but crowds follow. Jesus feeds five thousand men with five loaves and two fish, demonstrating His provision. He then walks on water, revealing His divine authority. Crossing to Gennesaret, Jesus heals many who touch the fringe of His garment.", theology: "Rejection and faith coexist in this chapter. Jesus' hometown rejection shows that familiarity can breed contempt and that a prophet is without honor among his own. The sending of the Twelve prefigures the Church's mission. Herod's fear that Jesus is John the Baptist resurrected highlights the public perception of Jesus' identity. The feeding of the five thousand echoes God's provision of manna in the wilderness, revealing Jesus as the new Moses and the source of true sustenance. Jesus walking on water is a clear theophany, as only God treads upon the sea (Job 9:8).", keyVerse: "Be of good cheer: it is I; be not afraid. - Mark 6:50" },
+        { num: 7, summary: "Pharisees and scribes criticize Jesus' disciples for eating with unwashed hands, but Jesus confronts them for setting aside God's commandments in favor of human traditions. He declares all foods clean, shifting the focus from external purity to the heart: 'What comes out of a man is what defiles him.' Jesus then travels to the region of Tyre, where a Syrophoenician woman pleads for her daughter's healing. Initially testing her faith, Jesus heals the girl because of the woman's persistence. Returning to Galilee, Jesus heals a deaf and mute man, using the Aramaic word 'Ephphatha!' ('Be opened!'), signifying the opening of ears and the loosening of the tongue.", theology: "This chapter marks a crucial transition in Jesus' ministry. By declaring all foods clean, Jesus abolishes the dietary laws that had distinguished Israel from the nations, foreshadowing the inclusion of Gentiles in the new covenant. True defilement, He teaches, comes from within—from the heart—not from external sources. The encounter with the Syrophoenician woman extends Jesus' ministry to Gentiles; her persistent faith is commended. The healing of the deaf-mute man echoes Isaiah's prophecy of the blind seeing and the deaf hearing (Isaiah 35:5-6), signaling the arrival of the messianic age.", keyVerse: "There is nothing from without a man, that entering into him can defile him. - Mark 7:15" },
+        { num: 8, summary: "Jesus feeds four thousand people with seven loaves and a few fish. He warns the disciples against the leaven of the Pharisees and of Herod. At Bethsaida, He heals a blind man in two stages. Then Peter confesses Jesus as the Christ—a turning point in the Gospel. Jesus predicts His death and resurrection, and when Peter rebukes Him, Jesus responds, 'Get behind me, Satan!' He then teaches that discipleship requires self-denial and taking up one's cross, declaring that those who lose their life for His sake will save it.", theology: "Peter's confession—'You are the Christ'—is the central confession of Mark's Gospel. However, Peter's misunderstanding of the nature of Christ's mission leads Jesus to rebuke him harshly. The prediction of Jesus' suffering, death, and resurrection reveals that the Messiah must be a suffering servant, not a conquering king in the earthly sense. Jesus' teaching on discipleship introduces the paradox of the kingdom: losing one's life to save it. The cross, a symbol of shame, becomes the path to glory.", keyVerse: "Whosoever will come after me, let him deny himself, and take up his cross, and follow me. - Mark 8:34" },
+        { num: 9, summary: "Six days later, Jesus takes Peter, James, and John to a high mountain, where He is transfigured before them—His clothes becoming dazzling white. Elijah and Moses appear, conversing with Jesus. Peter suggests building three shelters, but a cloud overshadows them, and a voice declares, 'This is my beloved Son; listen to him.' Coming down, Jesus heals a boy with an unclean spirit that the disciples could not cast out, teaching that such things require prayer. Jesus again predicts His death. He teaches about greatness: 'Whoever wants to be first must be servant of all.' He warns against causing little ones to stumble and emphasizes the seriousness of sin.", theology: "The Transfiguration reveals Jesus' divine glory, confirming Peter's confession. The presence of Moses (representing the Law) and Elijah (representing the Prophets) shows Jesus as the fulfillment of both. The Father's voice echoes the baptism, affirming Jesus as His beloved Son. The disciples' failure to cast out the demon teaches that faith and prayer are essential. Jesus' teaching on greatness turns worldly values upside down: true greatness is found in servanthood. The warnings about sin underscore the radical nature of discipleship.", keyVerse: "This is my beloved Son: hear him. - Mark 9:7" },
+        { num: 10, summary: "Jesus teaches about marriage, affirming God's original design for lifelong union. He blesses little children, declaring that the kingdom of God belongs to such as them. A rich young ruler asks about eternal life; Jesus tells him to sell everything and follow Him, but the man goes away sad. Jesus teaches that it is hard for the rich to enter the kingdom, but 'all things are possible with God.' He predicts His death a third time. James and John request positions of honor, prompting Jesus to teach that true greatness is found in servanthood: 'For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.' He heals blind Bartimaeus in Jericho.", theology: "This chapter addresses key issues of discipleship: marriage, children, wealth, service, and faith. Jesus' teaching on divorce elevates marriage to God's original creative intent. His blessing of children emphasizes that the kingdom is received with childlike trust. The rich young ruler's encounter highlights the danger of wealth as an idol that can prevent entering the kingdom. Jesus' third passion prediction emphasizes the necessity of His suffering. James and John's request exposes ambition, and Jesus redefines greatness as servanthood. Bartimaeus's persistent faith provides a model of discipleship.", keyVerse: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many. - Mark 10:45" },
+        { num: 11, summary: "Jesus enters Jerusalem on a donkey, fulfilling prophecy, as crowds shout 'Hosanna!'—the Triumphal Entry. He visits the temple but returns to Bethany. The next day, He curses a fig tree for bearing no fruit. He cleanses the temple, driving out money changers, declaring, 'My house shall be called a house of prayer for all nations.' The chief priests and scribes question His authority, and Jesus responds with a question about John's baptism, leaving them unable to answer.", theology: "The Triumphal Entry fulfills Zechariah 9:9, presenting Jesus as the humble Messiah. The crowds' acclamation reflects messianic hope, but their understanding is incomplete. The cursing of the fig tree symbolizes judgment on unfruitful Israel—a prophetic act that echoes the Old Testament's use of the fig tree as a symbol for Israel. The temple cleansing shows Jesus' zeal for true worship; He quotes Isaiah 56:7 ('house of prayer for all nations') and Jeremiah 7:11 ('den of robbers'), accusing the religious leaders of making worship a means of exploitation.", keyVerse: "My house shall be called of all nations the house of prayer. - Mark 11:17" },
+        { num: 12, summary: "Jesus tells the Parable of the Wicked Tenants, in which tenants kill the landowner's servants and his son, representing Israel's rejection of the prophets and ultimately of God's Son. The religious leaders realize the parable is against them. Jesus then answers questions: on paying taxes to Caesar ('Give to Caesar what is Caesar's, and to God what is God's'), on the resurrection (affirming that God is the God of the living, not the dead), and on the greatest commandment (love God and love neighbor). He commends the widow's offering, teaching that true generosity is measured by sacrifice, not amount.", theology: "The Parable of the Wicked Tenants is a powerful allegory of Israel's history: the landowner is God, the tenants are Israel's leaders, the servants are the prophets, and the son is Jesus. Jesus' citation of Psalm 118:22-23 ('the stone the builders rejected') identifies Himself as the rejected cornerstone. His response about taxes affirms civic responsibility while asserting ultimate allegiance to God. His teaching on the resurrection relies on the fact that God is the God of the patriarchs, implying their continued existence. The greatest commandment summarizes the law. The widow's offering exemplifies true discipleship: giving sacrificially.", keyVerse: "Thou shalt love the Lord thy God with all thy heart... and thy neighbour as thyself. - Mark 12:30-31" },
+        { num: 13, summary: "Jesus predicts the destruction of the temple, prompting His disciples to ask about the signs of the end. In what is known as the Olivet Discourse, Jesus warns of false messiahs, wars, earthquakes, famines, and persecution. He encourages endurance, noting that the gospel must be preached to all nations. He describes the 'abomination of desolation' and a time of great tribulation. He promises that the Son of Man will come in glory, gathering His elect. Jesus emphasizes watchfulness, using the parable of the fig tree and urging readiness, for no one knows the day or hour.", theology: "The Olivet Discourse combines the destruction of Jerusalem (which occurred in AD 70) with the eschatological end of the age. Jesus' warning about false messiahs reminds believers to be discerning. The promise that the gospel will be preached to all nations before the end underscores the mission of the Church. The 'abomination of desolation' refers to Daniel's prophecy, indicating a profanation of the holy place. The cosmic signs and the coming of the Son of Man on clouds (Daniel 7:13-14) affirm Jesus' divine identity. The call to watchfulness emphasizes readiness for His return.", keyVerse: "Take ye heed, watch and pray: for ye know not when the time is. - Mark 13:33" },
+        { num: 14, summary: "Two days before Passover, the chief priests plot to arrest Jesus. In Bethany, a woman anoints Jesus with expensive perfume; Jesus defends her act, saying she has prepared His body for burial. Judas Iscariot agrees to betray Jesus. Jesus celebrates the Passover with His disciples, instituting the Lord's Supper: 'This is my body... this is my blood of the covenant.' He predicts Peter's denial. In Gethsemane, Jesus prays in agony. Judas betrays Him with a kiss; He is arrested, and all the disciples flee. Jesus is tried before the Sanhedrin, and Peter denies Him three times.", theology: "The anointing at Bethany prefigures Jesus' burial and highlights the contrast between faithful devotion (the woman) and betrayal (Judas). The Last Supper establishes the Eucharist as the central sacrament of the Church; Jesus' words echo the covenant language of Exodus 24:8. In Gethsemane, Jesus' prayer reveals His humanity and His submission to the Father's will ('not what I will, but what you will'). The disciples' flight and Peter's denial show human weakness, while Jesus remains the faithful witness. The trial before the Sanhedrin condemns Jesus for blasphemy when He affirms His identity as the Son of Man.", keyVerse: "This is my blood of the new testament, which is shed for many. - Mark 14:24" },
+        { num: 15, summary: "Jesus is brought before Pilate early in the morning. Pilate, recognizing that the chief priests acted out of envy, offers to release a prisoner for Passover; the crowd, incited by the priests, chooses Barabbas instead of Jesus. Pilate, yielding to the crowd, sentences Jesus to crucifixion. Jesus is scourged, mocked by soldiers, and led to Golgotha (the place of the skull). He is crucified between two rebels. At the sixth hour, darkness covers the land; Jesus cries out, 'Eloi, Eloi, lema sabachthani?' ('My God, my God, why have you forsaken me?'). He breathes His last, and the temple veil is torn in two. A centurion declares, 'Truly this man was the Son of God.' Joseph of Arimathea buries Jesus in a tomb.", theology: "The crucifixion is the climactic event of Mark's Gospel. Pilate's recognition of Jesus' innocence highlights the injustice of His death. The crowd's choice of Barabbas (a rebel) over Jesus (the true liberator) is ironic. Jesus' cry of dereliction quotes Psalm 22, expressing His identification with human suffering and His experience of abandonment. The tearing of the temple veil signifies the end of the old covenant system and open access to God through Jesus' death. The centurion's confession—'Truly this man was the Son of God'—echoes the Gospel's opening declaration, framing the crucifixion as a revelation of Jesus' identity.", keyVerse: "Truly this man was the Son of God. - Mark 15:39" },
+        { num: 16, summary: "After the Sabbath, Mary Magdalene, Mary the mother of James, and Salome go to the tomb to anoint Jesus' body. They find the stone rolled away and a young man in a white robe who tells them, 'He is risen! He is not here.' He instructs them to tell the disciples and Peter that Jesus will meet them in Galilee. The women flee in terror and amazement, saying nothing to anyone. The Gospel then records appearances: Jesus appears to Mary Magdalene, to two disciples on the road, and to the Eleven. He commissions them: 'Go into all the world and preach the gospel to every creature.' He ascends to heaven and sits at the right hand of God.", theology: "The resurrection is the vindication of Jesus' identity and the foundation of Christian faith. The empty tomb and the angel's announcement confirm that Jesus is not among the dead but is risen. The commission to preach the gospel to every creature expands the mission beyond Israel to the whole world. Jesus' ascension and session at the right hand of God (Psalm 110:1) mark His exaltation. The Great Commission establishes the Church's mission, empowering disciples to continue Jesus' work. The Gospel ends with a call to faithful witness and the assurance of the Lord's presence in ministry.", keyVerse: "He is risen; he is not here. - Mark 16:6" }
     ];
 
     // State
@@ -712,7 +602,6 @@
     let streak = JSON.parse(localStorage.getItem('goodWayStreak')) || { current: 0, best: 0, lastDate: null };
     let readingProgress = JSON.parse(localStorage.getItem('goodWayReading')) || Array(16).fill(false);
 
-    // Helper Functions
     function getLevel(points) {
         if(points >= 500) return { name: "👑 DIAMOND", emoji: "💎" };
         if(points >= 300) return { name: "💎 PLATINUM", emoji: "⭐" };
@@ -762,7 +651,6 @@
         updateAllDisplays();
     }
 
-    // Quiz Functions
     function loadQuestion() {
         answered = false;
         document.getElementById('nextBtn').style.display = 'none';
@@ -810,7 +698,6 @@
         const allBtns = document.querySelectorAll('.option-btn');
         allBtns.forEach((b, idx) => {
             b.disabled = true;
-            b.classList.add('disabled');
             if(idx === q.correct) b.classList.add('correct');
             if(idx === selected && !isCorrect) b.classList.add('wrong');
         });
@@ -847,7 +734,6 @@
         loadQuestion();
     }
 
-    // Reading Plan Display
     function displayReadingPlan() {
         const container = document.getElementById('chaptersList');
         container.innerHTML = '';
@@ -858,13 +744,13 @@
             card.innerHTML = `
                 <div class="chapter-header" onclick="this.parentElement.classList.toggle('open')">
                     <span class="chapter-number">📖 Chapter ${ch.num}</span>
-                    <span>${completed ? '✓ Completed' : '▼'}</span>
+                    <span style="color:var(--green);">${completed ? '✓ Completed' : '▼'}</span>
                 </div>
                 <div class="chapter-content">
                     <div class="chapter-summary"><h4>📝 Summary</h4><p>${ch.summary}</p></div>
                     <div class="chapter-theology"><h4>📚 Theological Background</h4><p>${ch.theology}</p></div>
                     <div class="chapter-verse"><h4>✨ Key Verse</h4><p>${ch.keyVerse}</p></div>
-                    ${!completed ? `<button class="mark-read-btn" data-chapter="${i}" style="background:#4caf50; margin-top:10px; padding:8px; border-radius:20px;">✓ Mark as Read</button>` : ''}
+                    ${!completed ? `<button class="mark-read-btn" data-chapter="${i}" style="background:#4caf50; margin-top:10px; padding:10px; border-radius:30px; width:auto;">✓ Mark as Read</button>` : ''}
                 </div>
             `;
             container.appendChild(card);
@@ -884,7 +770,6 @@
         });
     }
 
-    // Share Functions
     function shareMessage(msg) {
         if(navigator.share) navigator.share({ title: 'Good Way Quiz', text: msg });
         else alert(msg);
@@ -939,15 +824,17 @@
     document.getElementById('shareAchievementBtn').onclick = () => shareMessage(`🕊️ Good Way Quiz!\n\nI scored ${currentScore}/${QUESTIONS.length} on Mark's Gospel Quiz!\nLevel: ${getLevel(currentPoints).name}\n\nTest your knowledge!`);
     document.getElementById('getCertificateBtn').onclick = () => {
         const certHtml = `
-            <div style="text-align:center; padding:30px; background:white; border-radius:20px;">
-                <h2 style="color:#2d1b4e;">🎓 Certificate of Completion</h2>
-                <p>This certifies that</p>
-                <h1 style="color:#ffd700; font-size:36px;">Faithful Servant</h1>
-                <p>has completed the Mark's Gospel Quiz</p>
-                <p>Score: ${currentScore}/${QUESTIONS.length} | Points: ${currentPoints} ⭐</p>
+            <div style="text-align:center; padding:40px; background:white; border-radius:24px; max-width:600px; margin:auto;">
+                <h1 style="color:#2d1b4e;">🎓 Certificate of Completion</h1>
+                <p style="margin:20px 0;">This certifies that</p>
+                <h2 style="color:#ffd700; font-size:36px;">Faithful Servant</h2>
+                <p style="margin:20px 0;">has successfully completed the</p>
+                <h3>Mark's Gospel Quiz</h3>
+                <p style="margin:20px 0;">Score: ${currentScore}/${QUESTIONS.length} | Points: ${currentPoints} ⭐</p>
                 <p>Level: ${getLevel(currentPoints).name}</p>
                 <p>Date: ${new Date().toLocaleDateString()}</p>
-                <p style="margin-top:20px;">🕊️ Good Way - Mark's Gospel Quiz</p>
+                <p style="margin-top:30px;">🕊️ Good Way - Mark's Gospel Quiz</p>
+                <p>agoodperception@gmail.com | +251911573334</p>
             </div>
         `;
         const win = window.open('', '_blank');
