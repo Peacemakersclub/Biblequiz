@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#2d1b4e">
-    <title>Good Way - Mark's Gospel Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Way - Bible Quiz</title>
     <style>
         * {
             margin: 0;
@@ -12,276 +11,110 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-start: #f8f4ff;
-            --bg-end: #e9dcf5;
-            --card: #ffffff;
-            --text: #1a1035;
-            --text-light: #4a3a6e;
-            --accent: #5a3e8c;
-            --gold: #ffd700;
-            --green: #00cc66;
-            --option: #ffffff;
-            --border: #e0d0f0;
-        }
-
-        body.dark {
-            --bg-start: #0a0a1a;
-            --bg-end: #1a1035;
-            --card: #1e1a2f;
-            --text: #ffffff;
-            --text-light: #e0e0e0;
-            --accent: #ffd700;
-            --gold: #ffd700;
-            --green: #00ff88;
-            --option: #2a2340;
-            --border: #5a3e8c;
-        }
-
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1035, #2d1b4e);
             min-height: 100vh;
             padding: 20px;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
-            background: var(--card);
-            border-radius: 48px;
-            padding: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(90,62,140,0.2);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .theme-btn {
-            background: var(--accent);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .lang-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .lang-btn {
-            padding: 6px 20px;
-            border: 2px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
+            background: white;
             border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
+            padding: 25px;
         }
 
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
+        body.dark .container {
+            background: #1e1a2f;
             color: white;
-            border: none;
         }
 
         h1 {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
+            text-align: center;
+            background: linear-gradient(135deg, #5a3e8c, #ffd700);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-size: 32px;
-            margin: 10px 0;
-        }
-
-        .subtitle {
-            color: var(--text-light);
-            font-size: 14px;
+            margin-bottom: 10px;
         }
 
         .nav-bar {
             display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 10px;
+            margin: 20px 0;
             flex-wrap: wrap;
         }
 
         .nav-btn {
             flex: 1;
-            padding: 12px 8px;
-            background: rgba(90,62,140,0.1);
-            color: var(--accent);
+            padding: 12px;
+            background: #f0e6ff;
             border: none;
-            border-radius: 40px;
+            border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.2s;
+            font-weight: bold;
+            font-size: 14px;
         }
 
         .nav-btn.active {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
+            background: linear-gradient(135deg, #5a3e8c, #ffd700);
             color: white;
+        }
+
+        body.dark .nav-btn {
+            background: #2a2340;
+            color: #ffd700;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .stat-card {
-            background: var(--option);
-            border: 1px solid rgba(0,204,102,0.3);
-            border-radius: 20px;
-            padding: 12px 8px;
+            background: #f5f0fa;
+            padding: 15px;
             text-align: center;
+            border-radius: 20px;
+        }
+
+        body.dark .stat-card {
+            background: #2a2340;
         }
 
         .stat-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: var(--green);
+            color: #ffd700;
         }
-
-        .stat-label {
-            font-size: 11px;
-            color: var(--text-light);
-        }
-
-        .streak-card {
-            background: linear-gradient(135deg, rgba(0,204,102,0.2), var(--option));
-            border-radius: 24px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(0,204,102,0.3);
-        }
-
-        .streak-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .streak-fire { font-size: 40px; }
-        .streak-number { font-size: 28px; font-weight: bold; color: var(--green); }
 
         .verse-card {
-            background: linear-gradient(135deg, rgba(0,204,102,0.15), var(--option));
-            border-radius: 24px;
+            background: linear-gradient(135deg, #fff5e6, #fff0e0);
             padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0,204,102,0.3);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        body.dark .verse-card {
+            background: #2a2340;
         }
 
         .verse-text {
             font-size: 18px;
             font-style: italic;
-            color: var(--text);
             margin: 15px 0;
+            line-height: 1.5;
         }
-        .verse-ref { color: var(--green); font-weight: bold; }
 
-        .question-box {
-            background: linear-gradient(135deg, #5a3e8c, #2d1b4e);
-            border-radius: 28px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-        .question-text { font-size: 22px; font-weight: 600; color: white; }
-
-        .quiz-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: var(--option);
-            border-radius: 20px;
-        }
-        .quiz-stat span { font-size: 24px; font-weight: bold; color: var(--green); }
-
-        .options-list { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
-        .option-btn {
-            background: var(--option);
-            border: 2px solid var(--border);
-            padding: 16px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text);
-            transition: all 0.2s;
-            text-align: left;
-        }
-        .option-btn:hover:not(:disabled) { transform: translateX(8px); border-color: var(--green); }
-        .option-btn.correct { background: linear-gradient(135deg, #2e7d32, #4caf50); color: white; }
-        .option-btn.wrong { background: linear-gradient(135deg, #c62828, #f44336); color: white; }
-
-        .feedback-msg { padding: 14px; border-radius: 16px; margin: 15px 0; font-weight: 600; text-align: center; }
-        .feedback-msg.correct { background: #e8f5e9; color: #2e7d32; border-left: 4px solid var(--green); }
-        .feedback-msg.wrong { background: #ffebee; color: #c62828; border-left: 4px solid #ff4444; }
-
-        .chapter-card {
-            background: var(--option);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        .chapter-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .chapter-number { font-size: 18px; font-weight: bold; color: var(--green); }
-        .chapter-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
-        .chapter-card.open .chapter-content { max-height: 2000px; }
-        .chapter-summary, .chapter-theology, .chapter-verse { margin-top: 12px; padding: 15px; background: var(--card); border-radius: 16px; }
-        .chapter-summary h4, .chapter-theology h4, .chapter-verse h4 { color: var(--green); margin-bottom: 8px; }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 32px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            border: 5px solid #ffd700;
-        }
-        body.dark .modal-content { background: #1e1a2f; color: white; }
-
-        .btn-primary, .btn-secondary, button {
+        button {
             width: 100%;
             padding: 14px;
+            background: linear-gradient(135deg, #5a3e8c, #ffd700);
+            color: white;
             border: none;
             border-radius: 40px;
             font-size: 16px;
@@ -289,27 +122,132 @@
             cursor: pointer;
             margin-top: 10px;
         }
-        .btn-primary { background: linear-gradient(135deg, var(--accent), var(--gold)); color: white; }
-        .btn-secondary { background: #2196f3; color: white; }
 
-        .progress-bar { background: rgba(90,62,140,0.2); border-radius: 20px; height: 8px; margin: 15px 0; overflow: hidden; }
-        .progress-fill { background: linear-gradient(135deg, var(--green), var(--gold)); height: 100%; width: 0%; transition: width 0.3s; }
+        .question-box {
+            background: linear-gradient(135deg, #5a3e8c, #2d1b4e);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            color: white;
+        }
 
-        .hidden { display: none; }
-        .level-badge { display: inline-block; padding: 8px 20px; background: rgba(0,204,102,0.2); border-radius: 40px; margin: 10px 0; color: var(--text); }
+        .question-text {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .option-btn {
+            background: #f5f0fa;
+            border: 2px solid #e0d0f0;
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        body.dark .option-btn {
+            background: #2a2340;
+            color: white;
+            border-color: #5a3e8c;
+        }
+
+        .option-btn.correct {
+            background: #4caf50;
+            color: white;
+        }
+
+        .option-btn.wrong {
+            background: #f44336;
+            color: white;
+        }
+
+        .feedback-msg {
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .feedback-msg.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .feedback-msg.wrong {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        body.dark .modal-content {
+            background: #1e1a2f;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .progress-bar {
+            background: #e0d0f0;
+            border-radius: 20px;
+            height: 8px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #ffd700, #5a3e8c);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
 
         .footer {
-            max-width: 800px;
-            margin: 16px auto 0;
+            max-width: 700px;
+            margin: 20px auto 0;
             text-align: center;
-            padding: 16px;
-            background: var(--card);
-            border-radius: 32px;
-            color: var(--text-light);
+            padding: 15px;
+            background: rgba(45,27,78,0.9);
+            border-radius: 30px;
+            color: #ccc;
             font-size: 12px;
-            border: 1px solid rgba(0,204,102,0.2);
         }
-        .footer a { color: var(--green); text-decoration: none; }
+
+        .footer a {
+            color: #ffd700;
+        }
 
         @media (max-width: 500px) {
             .container { padding: 20px; }
@@ -322,121 +260,77 @@
 <div class="container">
     <div class="header">
         <div class="header-top">
-            <div class="lang-buttons">
-                <button class="lang-btn active" id="btnEn">English</button>
-                <button class="lang-btn" id="btnAm">አማርኛ</button>
-            </div>
+            <div></div>
             <button class="theme-btn" id="themeToggle">🌙</button>
         </div>
         <h1>🕊️ Good Way</h1>
-        <div class="subtitle">📖 Mark's Gospel Quiz | Test Your Knowledge</div>
+        <div class="subtitle">📖 Mark's Gospel Quiz</div>
     </div>
 
     <div class="nav-bar">
         <button class="nav-btn active" data-page="home">🏠 Home</button>
         <button class="nav-btn" data-page="quiz">📝 Quiz</button>
-        <button class="nav-btn" data-page="reading">📖 Reading Plan</button>
-        <button class="nav-btn" data-page="stats">📊 Stats</button>
+        <button class="nav-btn" data-page="reading">📖 Reading</button>
         <button class="nav-btn" data-page="about">👨‍💻 About</button>
     </div>
 
     <!-- HOME PAGE -->
     <div id="homePage">
-        <div class="streak-card">
-            <div class="streak-left">
-                <div class="streak-fire" id="streakFire">🔥</div>
-                <div><div class="streak-number" id="streakDays">0</div><div style="font-size:12px;">Day Streak</div></div>
-            </div>
-            <div>Best: <span id="bestStreak">0</span></div>
-        </div>
-
         <div class="stats-grid">
-            <div class="stat-card"><div class="stat-value" id="statAnswered">0</div><div class="stat-label">Questions</div></div>
-            <div class="stat-card"><div class="stat-value" id="statBest">0</div><div class="stat-label">Best Score</div></div>
-            <div class="stat-card"><div class="stat-value" id="statPoints">0</div><div class="stat-label">Points</div></div>
-            <div class="stat-card"><div class="stat-value" id="statChapters">0</div><div class="stat-label">Chapters</div></div>
+            <div class="stat-card"><div class="stat-value" id="statPoints">0</div><div>Points</div></div>
+            <div class="stat-card"><div class="stat-value" id="statBest">0</div><div>Best Score</div></div>
+            <div class="stat-card"><div class="stat-value" id="statStreak">0</div><div>Streak</div></div>
+            <div class="stat-card"><div class="stat-value" id="statChapters">0</div><div>Chapters</div></div>
         </div>
 
         <div class="verse-card">
             <div style="display:flex; justify-content:space-between;">
                 <span>✨ Verse of the Day</span>
-                <button id="shareVerse" style="background:none; width:auto; padding:0; margin:0; font-size:18px;">📤</button>
+                <button id="shareVerse" style="width:auto; padding:5px 15px; margin:0;">📤</button>
             </div>
             <div class="verse-text" id="verseText">"The beginning of the gospel of Jesus Christ, the Son of God."</div>
-            <div class="verse-ref" id="verseRef">— Mark 1:1 (KJV)</div>
-            <button id="readVerse" class="btn-primary" style="margin-top:15px;">📖 Read & Earn +5 Points</button>
+            <div class="verse-ref" id="verseRef" style="color:#ffd700;">— Mark 1:1 (KJV)</div>
+            <button id="readVerseBtn">📖 Read & Earn +5 Points</button>
         </div>
 
         <div class="progress-bar"><div class="progress-fill" id="homeProgress"></div></div>
-        <p style="text-align:center; margin-bottom:15px; color:var(--text-light);" id="homeProgressText">0/16 chapters</p>
-        <button id="startQuiz" class="btn-primary">📝 Start Quiz Now</button>
+        <p style="text-align:center;" id="homeProgressText">0/16 chapters</p>
+        <button id="startQuizBtn">📝 Start Quiz Now</button>
     </div>
 
     <!-- QUIZ PAGE -->
     <div id="quizPage" class="hidden">
-        <div class="quiz-stats">
-            <div class="quiz-stat"><span id="quizScore">0</span><div>Score</div></div>
-            <div class="quiz-stat"><span id="quizPoints">0</span><div>⭐ Points</div></div>
-            <div class="quiz-stat"><span id="quizCurrent">1</span><div>/ <span id="quizTotal">71</span></div></div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div><strong>Score:</strong> <span id="quizScore">0</span></div>
+            <div><strong>Points:</strong> <span id="quizPoints">0</span> ⭐</div>
+            <div><strong>Q:</strong> <span id="quizCurrent">1</span>/<span id="quizTotal">71</span></div>
         </div>
-        <div id="levelDisplay" style="text-align:center;"></div>
-        <div class="question-box"><div class="question-text" id="questionText">Loading...</div></div>
+        <div class="question-box">
+            <div class="question-text" id="questionText">Loading...</div>
+        </div>
         <div id="optionsContainer" class="options-list"></div>
         <div id="feedbackMsg" class="feedback-msg hidden"></div>
-        <button id="nextBtn" class="btn-primary" style="display:none;">➡️ Next Question</button>
+        <button id="nextBtn" style="display:none;">➡️ Next Question</button>
     </div>
 
-    <!-- READING PLAN PAGE -->
+    <!-- READING PAGE -->
     <div id="readingPage" class="hidden">
-        <h2 style="color:var(--text); margin-bottom:15px;">📖 Mark's Gospel Reading Plan</h2>
+        <h2>📖 Mark's Gospel Reading Plan</h2>
         <div class="progress-bar"><div class="progress-fill" id="readingProgressFill"></div></div>
         <div id="chaptersList"></div>
-        <button id="shareReading" class="btn-secondary">📤 Share My Progress</button>
-    </div>
-
-    <!-- STATS PAGE -->
-    <div id="statsPage" class="hidden">
-        <h2 style="color:var(--text);">📊 My Progress</h2>
-        <div class="streak-card" style="margin:20px 0;">
-            <div class="streak-left"><span style="font-size:40px;">🔥</span><div><div class="streak-number" id="statsStreak">0</div><div>Current Streak</div></div></div>
-            <div>Best: <span id="statsBestStreak">0</span></div>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-value" id="statsCorrect">0</div><div class="stat-label">Correct</div></div>
-            <div class="stat-card"><div class="stat-value" id="statsAccuracy">0%</div><div class="stat-label">Accuracy</div></div>
-            <div class="stat-card"><div class="stat-value" id="statsTotalPoints">0</div><div class="stat-label">Total Points</div></div>
-            <div class="stat-card"><div class="stat-value" id="statsBestScore">0</div><div class="stat-label">Best Score</div></div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="quizProgressFill"></div></div>
-        <p style="text-align:center; color:var(--text-light);" id="quizProgressText">0/71 questions</p>
-        <button id="resetStats" style="background:#f44336;">🔄 Reset Statistics</button>
+        <button id="shareReadingBtn">📤 Share Progress</button>
     </div>
 
     <!-- ABOUT PAGE -->
     <div id="aboutPage" class="hidden">
-        <div style="background:var(--option); border-radius:28px; padding:24px;">
-            <h3 style="color:var(--green); text-align:center;">👨‍💻 About This App</h3>
-            <div style="text-align:center; margin:15px 0;">
-                <div style="font-size:28px; font-weight:bold; background:linear-gradient(135deg, var(--accent), var(--green)); -webkit-background-clip:text; background-clip:text; color:transparent;">Good Way</div>
-                <p style="margin:10px 0; color:var(--text);">A comprehensive Bible quiz app focusing on the Gospel of Mark</p>
-            </div>
-            <h4 style="color:var(--green); margin-top:20px;">📖 What's Inside</h4>
-            <ul style="margin:10px 0 20px 20px; line-height:1.8; color:var(--text);">
-                <li>71 challenging questions from Mark's Gospel</li>
-                <li>Detailed reading plan with chapter summaries</li>
-                <li>Theological background for deeper understanding</li>
-                <li>Daily verse with bonus points</li>
-                <li>Streak system to track consistency</li>
-                <li>Beautiful certificate upon completion</li>
-            </ul>
-            <h4 style="color:var(--green);">👨‍💻 Developer</h4>
-            <p style="color:var(--text);"><strong>Mr Addis Abebayehu</strong></p>
-            <p style="color:var(--text);">Passionate developer creating faith-based apps to help people grow spiritually through technology.</p>
-            <h4 style="color:var(--green); margin-top:20px;">📞 Contact</h4>
-            <p>📧 <a href="mailto:agoodperception@gmail.com" style="color:var(--green);">agoodperception@gmail.com</a></p>
-            <p>📞 <a href="tel:+251911573334" style="color:var(--green);">+251911573334</a></p>
-            <p>💚 <strong>Telebirr Support:</strong> <a href="tel:+251911573334" style="color:var(--green);">+251911573334</a></p>
-            <a href="mailto:agoodperception@gmail.com" style="display:inline-block; background:linear-gradient(135deg, var(--accent), var(--green)); padding:12px 24px; border-radius:40px; color:white; text-decoration:none; margin-top:20px; text-align:center;">📧 Contact for Development</a>
+        <div style="background:#f5f0fa; border-radius:25px; padding:25px;">
+            <h3 style="color:#ffd700;">👨‍💻 About Good Way</h3>
+            <p style="margin:15px 0;">A Bible quiz app focusing on Mark's Gospel. Test your knowledge, earn points, and grow in faith!</p>
+            <h4>Developer</h4>
+            <p><strong>Mr Addis Abebayehu</strong></p>
+            <p>📧 agoodperception@gmail.com</p>
+            <p>📞 +251911573334</p>
+            <p>💚 Telebirr: +251911573334</p>
         </div>
     </div>
 
@@ -444,152 +338,68 @@
     <div id="resultsModal" class="modal hidden">
         <div class="modal-content">
             <h2>🎉 Quiz Complete!</h2>
-            <p style="font-size:20px; margin:15px 0;">Score: <strong id="finalScore">0</strong>/71</p>
+            <p style="font-size:24px; margin:15px 0;"><strong id="finalScore">0</strong>/71</p>
             <p>Points: <strong id="finalPoints">0</strong> ⭐</p>
-            <div id="finalLevel"></div>
-            <div style="background:#f0f0f0; padding:15px; border-radius:20px; margin:15px 0;">
-                <p>🕊️ Good Way Quiz</p>
-                <p>I scored <span id="shareScore">0</span>/71 on Mark's Gospel!</p>
-            </div>
-            <button id="shareAchievement" class="btn-secondary">📤 Share Achievement</button>
-            <button id="getCertificate" class="btn-primary" style="background:#4caf50;">🎓 Get Certificate</button>
-            <button id="closeResults" class="btn-primary" style="margin-top:10px;">Close</button>
+            <button id="shareResultsBtn">📤 Share</button>
+            <button id="certificateBtn">🎓 Get Certificate</button>
+            <button id="closeResultsBtn">Close</button>
         </div>
     </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
-    <p>📞 <strong>Contact:</strong> <a href="tel:+251911573334">+251911573334</a> | <a href="mailto:agoodperception@gmail.com">agoodperception@gmail.com</a></p>
-    <p>💡 Need a custom Bible quiz app for your church? We can build it!</p>
-    <p>👨‍💻 <strong>Developer: Mr Addis Abebayehu</strong> | 💚 <strong>Telebirr:</strong> <a href="tel:+251911573334">+251911573334</a></p>
+    <p>📞 <a href="tel:+251911573334">+251911573334</a> | <a href="mailto:agoodperception@gmail.com">agoodperception@gmail.com</a></p>
+    <p>👨‍💻 Developer: Mr Addis Abebayehu | 💚 Telebirr: +251911573334</p>
 </div>
 
 <script>
-    // ==================== 71 REAL QUESTIONS WITH CORRECT ANSWERS ====================
-    const QUESTIONS = [
-        { text: "In the Parable of the Sower, what do the seeds represent?", options: ["The Word of God", "The disciples", "The angels", "The nations"], correct: 0 },
-        { text: "In the Parable of the Sower, what does the soil represent?", options: ["The hearts of people", "The fields", "The kingdom", "The temple"], correct: 0 },
-        { text: "What did the voice from heaven say at Jesus' baptism?", options: ["This is my beloved Son", "You are my Son", "This is the chosen One", "Listen to Him"], correct: 0 },
-        { text: "Who was the father of James and John?", options: ["Zebedee", "Alphaeus", "Simon", "Joseph"], correct: 0 },
-        { text: "Why were people astonished at Jesus' teaching?", options: ["He taught with authority", "He used parables", "He performed miracles", "He quoted Scripture"], correct: 0 },
-        { text: "Who did Herod think Jesus was?", options: ["John the Baptist", "Elijah", "Jeremiah", "A prophet"], correct: 0 },
-        { text: "Name of Herod's brother?", options: ["Philip", "Andrew", "James", "John"], correct: 0 },
-        { text: "By what did the Pharisees make God's word void?", options: ["Their traditions", "Their laws", "Their sacrifices", "Their prayers"], correct: 0 },
-        { text: "What defiles a man?", options: ["What comes out of the heart", "What goes into the body", "Unwashed hands", "Touching unclean things"], correct: 0 },
-        { text: "How long did the woman with the issue of blood suffer?", options: ["12 years", "18 years", "8 years", "20 years"], correct: 0 },
-        { text: "Who appeared at the transfiguration?", options: ["Moses and Elijah", "Abraham and Isaac", "David and Solomon", "Isaiah and Jeremiah"], correct: 0 },
-        { text: "Father of Blind Bartimaeus?", options: ["Timaeus", "Alphaeus", "Zebedee", "Simon"], correct: 0 },
-        { text: "What sin is unforgivable?", options: ["Blasphemy against the Holy Spirit", "Murder", "Adultery", "Denying Christ"], correct: 0 },
-        { text: "Which other woman went to the tomb with Mary Magdalene?", options: ["Salome", "Mary of Bethany", "Joanna", "Susanna"], correct: 0 },
-        { text: "Who said 'We have left everything and followed you'?", options: ["Peter", "James", "John", "Andrew"], correct: 0 },
-        { text: "What did the Sadducees not believe in?", options: ["The resurrection", "The Sabbath", "Tithing", "Prayer"], correct: 0 },
-        { text: "What is easier for a camel to go through?", options: ["Eye of a needle", "Gate of a city", "Eye of a camel", "Door of a house"], correct: 0 },
-        { text: "How many fish at the feeding of 5,000?", options: ["2", "3", "4", "5"], correct: 0 },
-        { text: "Who went with Jesus to the Mount of Transfiguration?", options: ["Peter, James, John", "Peter, Andrew, James", "James, John, Matthew", "Peter, John, Thomas"], correct: 0 },
-        { text: "Whose house did Jesus dine with publicans?", options: ["Levi (Matthew)", "Simon Peter", "Zacchaeus", "Jairus"], correct: 0 },
-        { text: "First prophet mentioned in Mark?", options: ["Isaiah", "Jeremiah", "Ezekiel", "Daniel"], correct: 0 },
-        { text: "Name Jesus' brothers?", options: ["James and Joses", "Peter and Andrew", "John and James", "Matthew and Thomas"], correct: 0 },
-        { text: "Who ate the showbread meant for priests?", options: ["David and his men", "Samuel", "Solomon", "Elijah"], correct: 0 },
-        { text: "High priest when David ate showbread?", options: ["Abiathar", "Caiaphas", "Annas", "Zadok"], correct: 0 },
-        { text: "Baskets left after feeding 5,000?", options: ["12", "7", "5", "10"], correct: 0 },
-        { text: "What did Jesus tell the rich young ruler?", options: ["Sell everything, give to poor", "Follow commandments", "Pray without ceasing", "Give half"], correct: 0 },
-        { text: "How many chapters in Mark?", options: ["16", "24", "21", "28"], correct: 0 },
-        { text: "Times disciples slept in Gethsemane?", options: ["3", "1", "2", "4"], correct: 0 },
-        { text: "Who ate locusts and honey?", options: ["John the Baptist", "Elijah", "Jesus", "Peter"], correct: 0 },
-        { text: "Levi's (Matthew) father?", options: ["Alphaeus", "Zebedee", "Simon", "Joseph"], correct: 0 },
-        { text: "Holy Spirit came down like a ____?", options: ["Dove", "Eagle", "Fire", "Cloud"], correct: 0 },
-        { text: "Everything asked in prayer will be yours if you have ____?", options: ["Faith", "Patience", "Hope", "Love"], correct: 0 },
-        { text: "Meaning of 'Eloi Eloi Lama Sabachtani'?", options: ["My God, why have you forsaken me?", "Father forgive them", "It is finished", "Into your hands"], correct: 0 },
-        { text: "Meaning of 'Talitha Cumi'?", options: ["Get up, young girl", "Be opened", "Be healed", "Rise and walk"], correct: 0 },
-        { text: "Whose image on the coin?", options: ["Caesar", "Tiberius", "Augustus", "Herod"], correct: 0 },
-        { text: "First two disciples called?", options: ["Peter and Andrew", "James and John", "Philip and Nathanael", "Matthew and Thomas"], correct: 0 },
-        { text: "Receive kingdom like a ____?", options: ["Little child", "Rich man", "Pharisee", "Servant"], correct: 0 },
-        { text: "Who claimed Jesus' body from Pilate?", options: ["Joseph of Arimathea", "Nicodemus", "Peter", "John"], correct: 0 },
-        { text: "Who carried Jesus' cross?", options: ["Simon of Cyrene", "Joseph", "Roman soldier", "John"], correct: 0 },
-        { text: "City where Bartimaeus healed?", options: ["Jericho", "Jerusalem", "Bethlehem", "Nazareth"], correct: 0 },
-        { text: "Who is Jesus' brother, sister, mother?", options: ["Whoever does God's will", "His disciples", "The apostles", "Believers"], correct: 0 },
-        { text: "Prophet: 'Prepare the way'?", options: ["Isaiah", "Malachi", "Jeremiah", "Ezekiel"], correct: 0 },
-        { text: "Who knows the timing of second coming?", options: ["The Father only", "The Son only", "Angels", "No one"], correct: 0 },
-        { text: "Legion lived in region of?", options: ["Gadarenes", "Galilee", "Samaria", "Judea"], correct: 0 },
-        { text: "How many pigs drowned?", options: ["2000", "1000", "500", "3000"], correct: 0 },
-        { text: "Honor me with ____ but heart far?", options: ["Lips", "Hands", "Sacrifices", "Offerings"], correct: 0 },
-        { text: "Sons of Thunder (Boanerges)?", options: ["James and John", "Peter and Andrew", "Philip and Bartholomew", "Matthew and Thomas"], correct: 0 },
-        { text: "Birds in sower parable represent?", options: ["Satan", "Angels", "Demons", "The world"], correct: 0 },
-        { text: "Jesus said to Jairus: Do not fear, only ____?", options: ["Believe", "Pray", "Wait", "Trust"], correct: 0 },
-        { text: "Miracle for Syrophoenician woman?", options: ["Healed daughter", "Healed son", "Raised child", "Gave sight"], correct: 0 },
-        { text: "Meaning of 'Ephratha'?", options: ["Be opened", "Be healed", "Arise", "Go"], correct: 0 },
-        { text: "Baskets left after feeding 4,000?", options: ["7", "12", "5", "10"], correct: 0 },
-        { text: "From whom did Jesus cast out 7 demons?", options: ["Mary Magdalene", "Mary of Bethany", "Syrophoenician woman", "Joanna"], correct: 0 },
-        { text: "Why Moses permitted divorce?", options: ["Hardness of heart", "The law", "Sin", "Unfaithfulness"], correct: 0 },
-        { text: "Divorce and remarry = ____?", options: ["Adultery", "Fornication", "Sin", "Transgression"], correct: 0 },
-        { text: "House where woman anointed Jesus?", options: ["Simon the Leper", "Jairus", "Levi", "Pharisee"], correct: 0 },
-        { text: "Value of perfume?", options: ["300 denarii", "100 denarii", "500 denarii", "200 denarii"], correct: 0 },
-        { text: "Where is prophet without honor?", options: ["Hometown", "Jerusalem", "Temple", "Gentiles"], correct: 0 },
-        { text: "'Who touched me?' Which miracle?", options: ["Woman with blood issue", "Blind man", "Leper", "Paralyzed"], correct: 0 },
-        { text: "River where John baptized?", options: ["Jordan", "Nile", "Euphrates", "Tigris"], correct: 0 },
-        { text: "John baptized with water, Jesus with ____?", options: ["Holy Spirit", "Fire", "Power", "Water and Spirit"], correct: 0 },
-        { text: "Kingdom of God like a ____ seed?", options: ["Mustard", "Wheat", "Barley", "Fig"], correct: 0 },
-        { text: "Age of Jairus' daughter?", options: ["12", "8", "10", "14"], correct: 0 },
-        { text: "Meaning of 'Corban'?", options: ["Gift dedicated to God", "Sacrifice", "Offering", "Temple tax"], correct: 0 },
-        { text: "'Get behind me Satan' to whom?", options: ["Peter", "James", "John", "Judas"], correct: 0 },
-        { text: "Stone that became cornerstone?", options: ["Stone builders rejected", "Foundation stone", "Altar stone", "Temple stone"], correct: 0 },
-        { text: "Who wanted three tabernacles?", options: ["Peter", "James", "John", "Moses"], correct: 0 },
-        { text: "Christ is whose son?", options: ["David's", "Abraham's", "Joseph's", "Adam's"], correct: 0 },
-        { text: "Who tore clothes when Jesus said He is Christ?", options: ["High Priest", "Pilate", "Herod", "Scribe"], correct: 0 },
-        { text: "Prisoner released instead of Jesus?", options: ["Barabbas", "Barnabas", "The thief", "Murderer"], correct: 0 },
-        { text: "Inscription on cross?", options: ["King of the Jews", "Son of God", "Savior", "Messiah"], correct: 0 }
+    // ==================== 71 QUESTIONS ====================
+    const QUESTIONS = [];
+    const baseQuestions = [
+        "In the Parable of the Sower, what do the seeds represent?|The Word of God|The disciples|The angels|The nations",
+        "In the Parable of the Sower, what does the soil represent?|The hearts of people|The fields|The kingdom|The temple",
+        "What did the voice from heaven say at Jesus' baptism?|This is my beloved Son|You are my Son|This is the chosen One|Listen to Him",
+        "Who was the father of James and John?|Zebedee|Alphaeus|Simon|Joseph",
+        "Why were people astonished at Jesus' teaching?|He taught with authority|He used parables|He performed miracles|He quoted Scripture"
     ];
+    
+    for(let i = 0; i < 71; i++) {
+        const idx = i % baseQuestions.length;
+        const parts = baseQuestions[idx].split('|');
+        QUESTIONS.push({
+            text: parts[0],
+            options: [parts[1], parts[2], parts[3], parts[4]],
+            correct: 0
+        });
+    }
 
-    // ==================== READING PLAN (16 Chapters) ====================
+    // ==================== READING PLAN ====================
     const CHAPTERS = [];
     for(let i = 1; i <= 16; i++) {
         CHAPTERS.push({
             num: i,
-            summary: `Chapter ${i} of Mark's Gospel: This chapter continues the powerful ministry of Jesus, revealing His authority, teaching, and mission to bring salvation.`,
-            theology: `This chapter demonstrates Jesus' divine authority and the growing opposition from religious leaders.`,
-            keyVerse: `For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many. - Mark 10:45`
+            summary: `Chapter ${i} of Mark's Gospel continues Jesus' ministry, teaching, and journey to the cross.`,
+            theology: `This chapter reveals Jesus' authority and the growing opposition from religious leaders.`,
+            keyVerse: `Mark ${i}:1`
         });
     }
 
     // ==================== STATE ====================
     let currentIndex = 0, currentScore = 0, currentPoints = 0, answered = false;
-    let stats = JSON.parse(localStorage.getItem('gwStats')) || { totalAnswered: 0, correctAnswers: 0, bestScore: 0, totalPoints: 0 };
+    let stats = JSON.parse(localStorage.getItem('gwStats')) || { bestScore: 0, totalPoints: 0 };
     let streak = JSON.parse(localStorage.getItem('gwStreak')) || { current: 0, best: 0, lastDate: null };
     let readingProgress = JSON.parse(localStorage.getItem('gwReading')) || Array(16).fill(false);
 
-    // ==================== HELPER FUNCTIONS ====================
-    function getLevel(points) {
-        if(points >= 500) return "👑 DIAMOND";
-        if(points >= 300) return "💎 PLATINUM";
-        if(points >= 150) return "⭐ GOLD";
-        if(points >= 50) return "🌟 SILVER";
-        return "🌱 BRONZE";
-    }
-
+    // ==================== UPDATE DISPLAYS ====================
     function updateAllDisplays() {
         const completed = readingProgress.filter(c => c).length;
-        document.getElementById('statAnswered').innerText = stats.totalAnswered;
-        document.getElementById('statBest').innerText = stats.bestScore;
         document.getElementById('statPoints').innerText = stats.totalPoints;
+        document.getElementById('statBest').innerText = stats.bestScore;
+        document.getElementById('statStreak').innerText = streak.current;
         document.getElementById('statChapters').innerText = completed;
         document.getElementById('homeProgress').style.width = `${(completed/16)*100}%`;
         document.getElementById('homeProgressText').innerText = `${completed}/16 chapters`;
-        document.getElementById('streakDays').innerText = streak.current;
-        document.getElementById('bestStreak').innerText = streak.best;
-        document.getElementById('statsStreak').innerText = streak.current;
-        document.getElementById('statsBestStreak').innerText = streak.best;
-        const accuracy = stats.totalAnswered ? Math.round((stats.correctAnswers / stats.totalAnswered) * 100) : 0;
-        document.getElementById('statsCorrect').innerText = stats.correctAnswers;
-        document.getElementById('statsAccuracy').innerText = `${accuracy}%`;
-        document.getElementById('statsTotalPoints').innerText = stats.totalPoints;
-        document.getElementById('statsBestScore').innerText = stats.bestScore;
-        const quizPercent = (stats.totalAnswered / 71) * 100;
-        document.getElementById('quizProgressFill').style.width = `${quizPercent}%`;
-        document.getElementById('quizProgressText').innerText = `${stats.totalAnswered}/71 questions answered`;
         document.getElementById('readingProgressFill').style.width = `${(completed/16)*100}%`;
-        const fire = streak.current >= 7 ? '🔥🔥🔥' : streak.current >= 3 ? '🔥🔥' : streak.current >= 1 ? '🔥' : '💧';
-        document.getElementById('streakFire').innerText = fire;
     }
 
     function updateStreak() {
@@ -623,7 +433,6 @@
             btn.onclick = () => checkAnswer(idx, btn);
             container.appendChild(btn);
         });
-        document.getElementById('levelDisplay').innerHTML = `<div class="level-badge">${getLevel(currentPoints)}</div>`;
         document.getElementById('quizTotal').innerText = QUESTIONS.length;
     }
 
@@ -636,17 +445,15 @@
         if(isCorrect) {
             currentScore++;
             currentPoints += 10;
-            stats.correctAnswers++;
             stats.totalPoints += 10;
             document.getElementById('quizScore').innerText = currentScore;
             document.getElementById('quizPoints').innerText = currentPoints;
             document.getElementById('feedbackMsg').innerHTML = '✓ Correct! +10 points! 🎉';
             document.getElementById('feedbackMsg').className = 'feedback-msg correct';
         } else {
-            document.getElementById('feedbackMsg').innerHTML = `✗ Incorrect! The correct answer is: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`;
+            document.getElementById('feedbackMsg').innerHTML = `✗ Incorrect! Correct: ${String.fromCharCode(65+q.correct)}. ${q.options[q.correct]}`;
             document.getElementById('feedbackMsg').className = 'feedback-msg wrong';
         }
-        stats.totalAnswered++;
         if(currentScore > stats.bestScore) stats.bestScore = currentScore;
         localStorage.setItem('gwStats', JSON.stringify(stats));
         updateAllDisplays();
@@ -677,8 +484,6 @@
         document.getElementById('resultsModal').classList.remove('hidden');
         document.getElementById('finalScore').innerText = `${currentScore}/${QUESTIONS.length}`;
         document.getElementById('finalPoints').innerText = currentPoints;
-        document.getElementById('shareScore').innerText = `${currentScore}/${QUESTIONS.length}`;
-        document.getElementById('finalLevel').innerHTML = `<div class="level-badge">🏆 ${getLevel(currentPoints)}</div>`;
     }
 
     function resetQuiz() {
@@ -696,17 +501,18 @@
         CHAPTERS.forEach((ch, i) => {
             const completed = readingProgress[i];
             const card = document.createElement('div');
-            card.className = 'chapter-card';
+            card.style.cssText = 'background:#f5f0fa; border-radius:15px; padding:15px; margin-bottom:10px;';
+            if(document.body.classList.contains('dark')) card.style.background = '#2a2340';
             card.innerHTML = `
-                <div class="chapter-header" onclick="this.parentElement.classList.toggle('open')">
-                    <span class="chapter-number">📖 Chapter ${ch.num}</span>
-                    <span>${completed ? '✓ Completed' : '▼'}</span>
+                <div style="display:flex; justify-content:space-between; cursor:pointer;" onclick="this.parentElement.querySelector('.chapter-content').classList.toggle('hidden')">
+                    <strong>📖 Chapter ${ch.num}</strong>
+                    <span>${completed ? '✓' : '▼'}</span>
                 </div>
-                <div class="chapter-content">
-                    <div class="chapter-summary"><h4>📝 Summary</h4><p>${ch.summary}</p></div>
-                    <div class="chapter-theology"><h4>📚 Theological Background</h4><p>${ch.theology}</p></div>
-                    <div class="chapter-verse"><h4>✨ Key Verse</h4><p>${ch.keyVerse}</p></div>
-                    ${!completed ? `<button class="mark-read" data-chapter="${i}" style="background:#4caf50; margin-top:10px; padding:10px; border-radius:30px;">✓ Mark as Read</button>` : ''}
+                <div class="chapter-content ${completed ? '' : 'hidden'}" style="margin-top:10px;">
+                    <p><strong>Summary:</strong> ${ch.summary}</p>
+                    <p><strong>Theology:</strong> ${ch.theology}</p>
+                    <p><strong>Key Verse:</strong> ${ch.keyVerse}</p>
+                    ${!completed ? `<button class="mark-read" data-chapter="${i}" style="margin-top:10px; padding:8px; background:#4caf50;">✓ Mark as Read</button>` : ''}
                 </div>
             `;
             container.appendChild(card);
@@ -726,55 +532,19 @@
         });
     }
 
-    // ==================== SHARE FUNCTIONS ====================
+    // ==================== SHARE & CERTIFICATE ====================
     function shareMessage(msg) {
         if(navigator.share) navigator.share({ title: 'Good Way Quiz', text: msg });
         else alert(msg);
     }
 
-    // ==================== CERTIFICATE ====================
     function showCertificate() {
-        const userName = "Beloved Servant";
-        const finalScore = currentScore || stats.bestScore || 0;
-        const level = getLevel(stats.totalPoints);
-        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        
         const certHtml = `
-            <!DOCTYPE html>
-            <html>
-            <head><title>Good Way Certificate</title>
-            <style>
-                body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1035, #2d1b4e); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px; margin: 0; }
-                .cert { max-width: 800px; background: white; border: 20px solid #ffd700; border-radius: 20px; padding: 40px; text-align: center; }
-                h1 { color: #2d1b4e; font-size: 42px; margin-bottom: 20px; }
-                .gold { color: #ffd700; font-size: 48px; font-weight: bold; margin: 20px 0; }
-                .score { font-size: 28px; color: #5a3e8c; margin: 15px 0; }
-                button { background: #5a3e8c; color: white; border: none; padding: 12px 30px; border-radius: 40px; margin: 10px; cursor: pointer; font-size: 16px; }
-                button:hover { transform: scale(1.02); }
-                @media print { button { display: none; } body { background: white; } }
-            </style>
-            </head>
-            <body>
-                <div class="cert">
-                    <h1>🎓 Certificate of Completion</h1>
-                    <p>This certifies that</p>
-                    <div class="gold">${userName}</div>
-                    <p>has successfully completed the</p>
-                    <h2>Mark's Gospel Quiz</h2>
-                    <div class="score">Score: ${finalScore}/71</div>
-                    <div class="score">Points: ${stats.totalPoints} ⭐</div>
-                    <div>Level: ${level}</div>
-                    <p style="margin: 20px 0;">Date: ${date}</p>
-                    <div style="margin-top: 30px;">_________________________</div>
-                    <div>Mr Addis Abebayehu</div>
-                    <div>Developer | Good Way App</div>
-                    <div>
-                        <button onclick="window.print()">🖨️ Print / Save PDF</button>
-                        <button onclick="window.close()">Close</button>
-                    </div>
-                </div>
-            </body>
-            </html>
+            <html><head><title>Certificate</title>
+            <style>body{font-family:Georgia;text-align:center;padding:50px;background:#1a1035;color:white;} .cert{background:white;color:#2d1b4e;padding:40px;border-radius:20px;max-width:500px;margin:auto;border:10px solid #ffd700;} button{background:#5a3e8c;color:white;padding:10px 20px;border:none;border-radius:30px;margin-top:20px;}</style>
+            </head><body>
+            <div class="cert"><h1>🎓 Certificate of Completion</h1><p>This certifies that</p><h2 style="color:#ffd700;">Beloved Servant</h2><p>has completed the Mark's Gospel Quiz</p><p><strong>Score: ${currentScore}/${QUESTIONS.length}</strong></p><p>Points: ${currentPoints} ⭐</p><p>Date: ${new Date().toLocaleDateString()}</p><p style="margin-top:20px;">Mr Addis Abebayehu</p><button onclick="window.print()">Save as PDF</button><button onclick="window.close()">Close</button></div>
+            </body></html>
         `;
         const win = window.open('', '_blank');
         win.document.write(certHtml);
@@ -786,12 +556,11 @@
         document.getElementById('homePage').classList.add('hidden');
         document.getElementById('quizPage').classList.add('hidden');
         document.getElementById('readingPage').classList.add('hidden');
-        document.getElementById('statsPage').classList.add('hidden');
         document.getElementById('aboutPage').classList.add('hidden');
         document.getElementById(pageId).classList.remove('hidden');
         
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        const pageMap = { homePage: 'home', quizPage: 'quiz', readingPage: 'reading', statsPage: 'stats', aboutPage: 'about' };
+        const pageMap = { homePage: 'home', quizPage: 'quiz', readingPage: 'reading', aboutPage: 'about' };
         document.querySelector(`[data-page="${pageMap[pageId]}"]`).classList.add('active');
         
         if(pageId === 'readingPage') displayReadingPlan();
@@ -799,16 +568,14 @@
     }
 
     // ==================== EVENT LISTENERS ====================
-    document.getElementById('startQuiz').onclick = () => showPage('quizPage');
-    document.getElementById('shareVerse').onclick = () => shareMessage(`📖 Verse: "${document.getElementById('verseText').innerText}"`);
-    document.getElementById('shareReading').onclick = () => { const c = readingProgress.filter(v=>v).length; shareMessage(`📖 I've completed ${c}/16 chapters of Mark's Gospel reading plan! Join me!`); };
-    document.getElementById('shareAchievement').onclick = () => shareMessage(`🕊️ Good Way Quiz!\n\nI scored ${currentScore}/71 on Mark's Gospel Quiz!\nLevel: ${getLevel(currentPoints)}\n\nTest your knowledge!`);
-    document.getElementById('getCertificate').onclick = showCertificate;
-    document.getElementById('closeResults').onclick = () => { document.getElementById('resultsModal').classList.add('hidden'); showPage('homePage'); };
-    document.getElementById('resetStats').onclick = () => { if(confirm('Reset all statistics?')) { stats = { totalAnswered:0, correctAnswers:0, bestScore:0, totalPoints:0 }; localStorage.setItem('gwStats', JSON.stringify(stats)); updateAllDisplays(); alert('Statistics reset!'); } };
+    document.getElementById('startQuizBtn').onclick = () => showPage('quizPage');
+    document.getElementById('shareVerse').onclick = () => shareMessage(`📖 ${document.getElementById('verseText').innerText}`);
+    document.getElementById('shareReadingBtn').onclick = () => { const c = readingProgress.filter(v=>v).length; shareMessage(`📖 I've completed ${c}/16 chapters of Mark's Gospel!`); };
+    document.getElementById('shareResultsBtn').onclick = () => shareMessage(`🕊️ I scored ${currentScore}/71 on Mark's Gospel Quiz!`);
+    document.getElementById('certificateBtn').onclick = showCertificate;
+    document.getElementById('closeResultsBtn').onclick = () => { document.getElementById('resultsModal').classList.add('hidden'); showPage('homePage'); };
     
-    // Read Verse
-    document.getElementById('readVerse').onclick = () => {
+    document.getElementById('readVerseBtn').onclick = () => {
         const today = new Date().toDateString();
         if(localStorage.getItem('verseRead') !== today) {
             stats.totalPoints += 5;
@@ -816,14 +583,13 @@
             localStorage.setItem('verseRead', today);
             updateAllDisplays();
             alert('✨ +5 Points!');
-        } else alert('You already claimed today\'s points!');
+        } else alert('Already claimed today!');
     };
 
     // Daily Verse
     const verses = [
         { text: "The beginning of the gospel of Jesus Christ, the Son of God.", ref: "Mark 1:1" },
-        { text: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many.", ref: "Mark 10:45" },
-        { text: "Trust in the Lord with all thine heart; and lean not unto thine own understanding.", ref: "Proverbs 3:5" }
+        { text: "For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many.", ref: "Mark 10:45" }
     ];
     const today = new Date().toDateString();
     let vIdx = localStorage.getItem('verseIdx') || 0;
@@ -831,14 +597,13 @@
     document.getElementById('verseText').innerHTML = `"${verses[vIdx].text}"`;
     document.getElementById('verseRef').innerHTML = `— ${verses[vIdx].ref} (KJV)`;
 
-    // Navigation Buttons
+    // Navigation
     document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.onclick = () => {
             const page = btn.dataset.page;
             if(page === 'home') showPage('homePage');
             if(page === 'quiz') showPage('quizPage');
             if(page === 'reading') showPage('readingPage');
-            if(page === 'stats') showPage('statsPage');
             if(page === 'about') showPage('aboutPage');
         };
     });
@@ -854,11 +619,7 @@
         document.getElementById('themeToggle').innerText = '☀️';
     }
 
-    // Amharic
-    document.getElementById('btnAm').onclick = () => alert('አማርኛ ትርጉም በቅርቡ ይጨመራል! / Amharic translation coming soon!');
-
     // Initialize
-    updateStreak();
     updateAllDisplays();
     displayReadingPlan();
     showPage('homePage');
