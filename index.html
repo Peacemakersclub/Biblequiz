@@ -2,95 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FaithBase — Bible Quiz, Free Courses, Church Directory, Daily Bread, and 50 Men of God">
-    <title>FaithBase | Pentecostal & Evangelical Discipleship Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Pentecostal Evangelical Discipleship Platform: 100-question Bible quiz, 12 free courses with certificates, church directory, and 50 men of God">
+    <meta name="theme-color" content="#1F4E4A">
+    <title>Upper Room Faith | Bible Quiz · Courses · Church Directory · Men of God</title>
+    
+    <!-- External Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <header class="main-header">
-            <div class="container">
-                <div class="logo">
-                    <span class="cross">✝️</span>
-                    <h1>Faith<span>Base</span></h1>
-                    <p class="tagline">Rooted in Scripture | Pentecostal Heritage</p>
-                </div>
-                <nav class="main-nav">
-                    <button class="nav-link active" data-page="quiz">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        Bible Quiz
-                    </button>
-                    <button class="nav-link" data-page="courses">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-                        Free Courses
-                    </button>
-                    <button class="nav-link" data-page="churches">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        Church Directory
-                    </button>
-                    <button class="nav-link" data-page="reading">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                        Daily Bread
-                    </button>
-                    <button class="nav-link" data-page="men">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        50 Men of God
-                    </button>
-                </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            </div>
-        </header>
 
-        <main id="main-content">
-            <div class="container">
-                <div id="page-container"></div>
+    <!-- ==================== HEADER / HERO SECTION ==================== -->
+    <header class="hero">
+        <div class="container">
+            <h1><i class="fas fa-cross" style="color: #C49A6C;"></i> Upper Room Faith</h1>
+            <p>Pentecostal · Evangelical · Spirit-filled Discipleship | 100 Quiz Questions · 12 Free Courses · Church Directory · 50 Men of God</p>
+            
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-tab="quiz"><i class="fas fa-bible"></i> Bible Quiz (100)</button>
+                <button class="tab-btn" data-tab="courses"><i class="fas fa-graduation-cap"></i> 12 Courses + Certificate</button>
+                <button class="tab-btn" data-tab="directory"><i class="fas fa-church"></i> Church Directory</button>
+                <button class="tab-btn" data-tab="men"><i class="fas fa-users"></i> 50 Men of God</button>
             </div>
-        </main>
+        </div>
+    </header>
 
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h4>FaithBase</h4>
-                        <p>Equipping believers with the Word of God through interactive tools and resources.</p>
-                        <p class="doctrine">📖 Pentecostal • Evangelical • Sola Scriptura</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#" data-page="quiz">Bible Quiz</a></li>
-                            <li><a href="#" data-page="courses">Free Courses</a></li>
-                            <li><a href="#" data-page="churches">Find a Church</a></li>
-                            <li><a href="#" data-page="reading">Reading Plan</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Statement of Faith</h4>
-                        <p>We believe in the Trinity, the deity of Christ, the baptism of the Holy Spirit with evidence of speaking in tongues, and the imminent return of Jesus.</p>
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="container">
+        
+        <!-- PANEL 1: BIBLE QUIZ (100 Questions) -->
+        <section id="quizPanel" class="panel active-panel">
+            <div class="card">
+                <div class="quiz-header">
+                    <h2><i class="fas fa-question-circle"></i> Bible Knowledge Quiz</h2>
+                    <div class="quiz-stats">
+                        <span><i class="fas fa-star"></i> Points: <span id="quizScoreDisplay">0</span> / 100</span>
+                        <span><i class="fas fa-check-circle"></i> Correct: <span id="correctCount">0</span></span>
+                        <span><i class="fas fa-flag-checkered"></i> Progress: <span id="answeredCount">0</span>/100</span>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <p>© 2024 FaithBase — All content rooted in Scripture | <a href="#" id="resetAllData">Reset All Progress</a></p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgressFill"></div>
+                </div>
+                <div id="quizContainer" class="quiz-container"></div>
+                <div class="quiz-actions">
+                    <button id="submitQuizBtn" class="btn btn-gold"><i class="fas fa-check-double"></i> Submit & Get Score</button>
+                    <button id="resetQuizBtn" class="btn btn-outline"><i class="fas fa-redo-alt"></i> Reset Quiz</button>
+                    <button id="downloadQuizCertBtn" class="btn btn-cert"><i class="fas fa-certificate"></i> Download Certificate (70%+)</button>
+                </div>
+                <div id="quizResultMessage" class="quiz-result"></div>
+            </div>
+        </section>
+
+        <!-- PANEL 2: 12 COURSES (5 lessons each) -->
+        <section id="coursesPanel" class="panel">
+            <div class="card">
+                <h2><i class="fas fa-book-open"></i> 12 Biblical Courses · 5 Lessons Each</h2>
+                <p class="subtitle">Complete all 5 lessons in any course to earn a professional certificate. Your progress is saved automatically.</p>
+            </div>
+            <div id="coursesGrid" class="grid-3"></div>
+        </section>
+
+        <!-- PANEL 3: CHURCH DIRECTORY -->
+        <section id="directoryPanel" class="panel">
+            <div class="card">
+                <h2><i class="fas fa-map-marker-alt"></i> Pentecostal & Evangelical Church Directory</h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="churchSearch" placeholder="Search by church name, city, state, or denomination...">
                 </div>
             </div>
-        </footer>
-    </div>
+            <div id="churchList" class="grid-3"></div>
+        </section>
 
-    <!-- Scripts -->
+        <!-- PANEL 4: 50 MEN OF GOD -->
+        <section id="menPanel" class="panel">
+            <div class="card">
+                <h2><i class="fas fa-crown"></i> 50 Men of God · Legacy of Faith</h2>
+                <p>Honoring the pioneers, revivalists, pastors, and teachers who shaped Pentecostal and Evangelical Christianity.</p>
+            </div>
+            <div id="menGrid" class="men-grid"></div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-dove"></i> In honor of the Holy Spirit · Soli Deo Gloria</p>
+            <p class="small">All Scripture is God-breathed and useful for teaching, rebuking, correcting and training in righteousness. — 2 Timothy 3:16</p>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- Data Files -->
     <script src="data/quiz-questions.js"></script>
     <script src="data/courses-data.js"></script>
     <script src="data/churches-data.js"></script>
-    <script src="data/reading-plan.js"></script>
-    <script src="data/men-data.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/quiz.js"></script>
-    <script src="js/courses.js"></script>
-    <script src="js/churches.js"></script>
-    <script src="js/reading.js"></script>
-    <script src="js/men.js"></script>
-    <script src="js/app.js"></script>
+    <script src="data/men-of-god-data.js"></script>
+    
+    <!-- Main Application Logic -->
+    <script src="script.js"></script>
 </body>
 </html>
