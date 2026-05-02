@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>100 Bible Trivia Questions | Mega Biblical Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a3c2c 0%, #0e2a1e 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .quiz-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* main card */
+        .quiz-card {
+            background: #fffef5;
+            border-radius: 2rem;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(210, 180, 110, 0.3);
+            overflow: hidden;
+        }
+
+        /* header */
+        .quiz-header {
+            background: #2c5f2d;
+            background: linear-gradient(135deg, #2c5f2d, #1e3a20);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #fef0c0;
+        }
+
+        .quiz-header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .quiz-header h1 span {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .quiz-header p {
+            margin-top: 0.5rem;
+            font-style: italic;
+            border-top: 1px solid #7da06e;
+            display: inline-block;
+            padding-top: 0.4rem;
+        }
+
+        /* stats bar */
+        .stats-bar {
+            background: #e8dfcc;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 1px solid #cfc3a8;
+            font-weight: 600;
+            color: #3a2c1a;
+        }
+
+        .category-badge {
+            background: #2c5f2d;
+            color: #ffefc0;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+
+        .score-badge {
+            background: #c4a35a;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            color: #1e2a0e;
+        }
+
+        .progress-container {
+            background: #d9ceb0;
+            height: 6px;
+            width: 100%;
+        }
+
+        .progress-fill {
+            background: #2c5f2d;
+            height: 6px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* main content */
+        .quiz-body {
+            padding: 2rem;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2a4825;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            border-left: 5px solid #c4a35a;
+            padding-left: 1rem;
+        }
+
+        .options-list {
+            list-style: none;
+            margin: 1rem 0 1.8rem;
+        }
+
+        .option-item {
+            background: #fdfaf2;
+            border: 1px solid #e2d5bc;
+            border-radius: 60px;
+            margin-bottom: 0.8rem;
+            padding: 0.7rem 1.2rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-item:hover {
+            background: #f6efdf;
+            border-color: #b68b40;
+            transform: translateX(4px);
+        }
+
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            margin-right: 1rem;
+            accent-color: #2c5f2d;
+            cursor: pointer;
+        }
+
+        .option-text {
+            font-size: 1rem;
+            color: #2c2b1f;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        button {
+            background: #e2d5bd;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+
+        button.primary {
+            background: #2c5f2d;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        button.primary:hover {
+            background: #1f4520;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .category-selector {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .category-selector select {
+            background: #f4efdf;
+            border: 1px solid #c4b28a;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .reset-btn {
+            background: #a8813a;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .result-area {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .final-score-circle {
+            background: #2c5f2d;
+            color: #f7efc3;
+            font-size: 3rem;
+            font-weight: bold;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 80px;
+            margin: 1rem 0;
+        }
+
+        .message-final {
+            background: #eee5d4;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #e8dfcc;
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.75rem;
+            color: #5e4e2b;
+            border-top: 1px solid #cfc3a8;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-body {
+                padding: 1.2rem;
+            }
+            .question-text {
+                font-size: 1.2rem;
+            }
+            .option-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-wrapper">
+    <div class="quiz-card" id="quizApp">
+        <div class="quiz-header">
+            <h1>📖 100 Bible Trivia Questions <span>✝️</span></h1>
+            <p>Test your knowledge of Scripture — Heroes, Kings, Prophets, Jesus & more</p>
+        </div>
+        <div id="dynamicContent"></div>
+        <footer>“All Scripture is breathed out by God” — 2 Timothy 3:16</footer>
+    </div>
+</div>
+
+<script>
+    // ========================
+    // FULL 100 BIBLE QUESTIONS
+    // ========================
+    const QUIZ_DATA = [
+        // ---- HEROES OF THE FAITH (Noah, Joseph, Moses, David, Paul) - 20 questions ----
+        { category: "Heroes of the Faith", text: "Of what wood was Noah’s Ark made?", options: ["Gopher wood", "Acacia wood", "Cedar of Lebanon", "Carob wood"], correct: 0 },
+        { category: "Heroes of the Faith", text: "How long was the ark (in cubits)?", options: ["500 cubits", "100 cubits", "300 cubits", "250 cubits"], correct: 2 },
+        { category: "Heroes of the Faith", text: "For how long did the flood rain fall?", options: ["80 days", "12 days", "107 days", "40 days and 40 nights"], correct: 3 },
+        { category: "Heroes of the Faith", text: "How long did the flood cover the earth?", options: ["19 days", "150 days", "50 days", "15 days"], correct: 1 },
+        { category: "Heroes of the Faith", text: "How old was Joseph when his brethren sold him into slavery?", options: ["69", "23", "17", "90"], correct: 2 },
+        { category: "Heroes of the Faith", text: "Who suggested that Joseph interpret Pharaoh's dreams?", options: ["Potiphar", "The cupbearer", "Judah", "The baker"], correct: 1 },
+        { category: "Heroes of the Faith", text: "What are the names of Joseph’s two sons?", options: ["John & Mark", "Cain & Abel", "Ephraim & Manasseh", "Dan & Naphtali"], correct: 2 },
+        { category: "Heroes of the Faith", text: "How long did Moses’s mother hide him?", options: ["13 months", "10 months", "3 months", "7 months"], correct: 2 },
+        { category: "Heroes of the Faith", text: "Who was Moses’s father-in-law?", options: ["Laban", "Mordechai", "Jethro", "Cyrus"], correct: 2 },
+        { category: "Heroes of the Faith", text: "Name of Aaron’s (Moses's brother) wife?", options: ["Elisheba", "Miriam", "Zipporah", "Deborah"], correct: 0 },
+        { category: "Heroes of the Faith", text: "How old was Moses when he said 'Let my people go'?", options: ["80 years", "18 years", "13 years", "39 years"], correct: 0 },
+        { category: "Heroes of the Faith", text: "First of the ten plagues?", options: ["Frogs", "Water turned to blood", "Lice", "Darkness"], correct: 1 },
+        { category: "Heroes of the Faith", text: "Where was Moses buried?", options: ["In Canaan", "In a cave", "Valley of Moab", "In the desert"], correct: 2 },
+        { category: "Heroes of the Faith", text: "What was the height of Goliath?", options: ["Six cubits and a span", "Seven cubits", "Nine cubits", "Five cubits"], correct: 0 },
+        { category: "Heroes of the Faith", text: "In which cave did David seek refuge from Saul?", options: ["Cave at Makkedah", "Cave of Machpelah", "Cave of Adullam", "Dambulla Cave"], correct: 2 },
+        { category: "Heroes of the Faith", text: "Chief of the three mighty men of David?", options: ["Jonathan", "Benaiah", "Josheb-basshebeth", "Abishai"], correct: 2 },
+        { category: "Heroes of the Faith", text: "Who restored Paul’s sight after the Lord blinded him?", options: ["Peter", "Luke", "Ananias", "Matthew"], correct: 2 },
+        { category: "Heroes of the Faith", text: "How did Paul escape Damascus?", options: ["In a basket through wall", "Angel lifted him", "Earthquake", "Silas rescued him"], correct: 0 },
+        { category: "Heroes of the Faith", text: "Where was Paul stoned?", options: ["Melita", "Damascus", "Galilee", "Lystra"], correct: 3 },
+        { category: "Heroes of the Faith", text: "What was Paul’s occupation?", options: ["Carpentry", "Tentmaking", "Stonemasonry", "Fishing"], correct: 1 },
+
+        // ---- CHILDREN OF ISRAEL (6 questions) ----
+        { category: "Children of Israel", text: "Total number of the children of Israel that went down to Egypt?", options: ["1000", "70", "53", "560"], correct: 1 },
+        { category: "Children of Israel", text: "How long were the children of Israel in Egypt?", options: ["150 years", "40 years", "430 years", "666 years"], correct: 2 },
+        { category: "Children of Israel", text: "How were they guided in the wilderness?", options: ["Pillar of cloud/fire", "Voice of God", "Moses", "Aaron's rod"], correct: 0 },
+        { category: "Children of Israel", text: "How long in wilderness of Shur before finding water?", options: ["5 days", "15 days", "3 days", "7 days"], correct: 2 },
+        { category: "Children of Israel", text: "Upon what mountain was Israel cursed?", options: ["Moriah", "Zion", "Carmel", "Ebal"], correct: 3 },
+        { category: "Children of Israel", text: "How long were the children of Israel in captivity?", options: ["70 years", "49 years", "59 years", "100 years"], correct: 0 },
+
+        // ---- KINGS (12 questions) ----
+        { category: "Kings", text: "What were Solomon’s other names?", options: ["Jedediah & Lemuel", "Joab & Lemuel", "Jedediah & Joab", "Lemuel & Jeremiah"], correct: 0 },
+        { category: "Kings", text: "Which king made two golden calves?", options: ["Jeroboam", "Jehu", "Joktan", "Joram"], correct: 0 },
+        { category: "Kings", text: "Who was the most wicked king of Israel?", options: ["Ahab", "Abimelech", "Manasseh", "Menahem"], correct: 0 },
+        { category: "Kings", text: "Two kings disguised and slain by archers?", options: ["Ahab & Zedekiah", "Enosh & Zedekiah", "Japeth & Josiah", "Ahab & Josiah"], correct: 3 },
+        { category: "Kings", text: "What king was killed by his own sons?", options: ["Manasseh", "Sennacherib", "Ahaz", "Jotham"], correct: 1 },
+        { category: "Kings", text: "King of Judah overtaken, eyes put out?", options: ["Zedekiah", "Jehoram", "Abijah", "Rehoboam"], correct: 0 },
+        { category: "Kings", text: "Whose name meant 'peaceable'?", options: ["Manasseh", "Josiah", "Solomon", "David"], correct: 2 },
+        { category: "Kings", text: "Made king of Judah at seven years old?", options: ["Jehoshaphat", "Hosea", "Joash", "Ahaz"], correct: 2 },
+        { category: "Kings", text: "What king did God smite with leprosy?", options: ["Athaliah", "Jehoram", "Amaziah", "Uzziah"], correct: 3 },
+        { category: "Kings", text: "King who burned his children in fire?", options: ["Abimelech", "Ahab", "Menahem", "Ahaz"], correct: 3 },
+        { category: "Kings", text: "King on throne of Judah at eight years old?", options: ["Adonibezek", "Jehoiachin", "Joash", "David"], correct: 1 },
+        { category: "Kings", text: "Name of king of Judah who had eyes put out and imprisoned for life?", options: ["Zedekiah", "Absalom", "Jehoshaphat", "Abimelech"], correct: 0 },
+
+        // ---- PROPHETS (8 questions) ----
+        { category: "Prophets", text: "What was the first prophecy?", options: ["End of age", "Victory over Satan (seed of woman)", "Second coming", "Destruction of temple"], correct: 1 },
+        { category: "Prophets", text: "Aged prophet’s hands upheld for victory?", options: ["Elisha", "Elijah", "Moses", "Hosea"], correct: 2 },
+        { category: "Prophets", text: "Who foretold the result of ten tribes of Israel?", options: ["Isaiah", "Nahum", "Ahijah", "Nehemiah"], correct: 2 },
+        { category: "Prophets", text: "Who prophesied Judah carried captive to Babylon?", options: ["Zechariah", "Nahum", "Jeremiah", "Haggai"], correct: 2 },
+        { category: "Prophets", text: "Which prophet was carried captive to Babylon?", options: ["Ezekiel", "Malachi", "Nehemiah", "Zechariah"], correct: 0 },
+        { category: "Prophets", text: "Prophet suspended by a lock of hair?", options: ["Daniel", "Ezekiel", "Joel", "Elisha"], correct: 1 },
+        { category: "Prophets", text: "Prophet sent as missionary to Ninevites?", options: ["Jonah", "Paul", "Elon", "Malachi"], correct: 0 },
+        { category: "Prophets", text: "Destruction of Nineveh fulfilled whose prophecy?", options: ["Jonah", "Isaiah", "Daniel", "Nahum"], correct: 3 },
+
+        // ---- JESUS AND HIS DISCIPLES (6) ----
+        { category: "Jesus & Disciples", text: "Savior's last command to disciples?", options: ["Help widows", "Love others", "Make disciples of all nations", "Honor Sabbath"], correct: 2 },
+        { category: "Jesus & Disciples", text: "Of whom did Jesus say 'I will make you fishers of men'?", options: ["Matthew, Peter, Simeon", "Simeon, Peter, Andrew", "James, Peter, Andrew", "Thomas, Matthew, Peter"], correct: 1 },
+        { category: "Jesus & Disciples", text: "Two promises Jesus made when about to leave?", options: ["Heaven & return", "Salvation & Comforter", "Riches & place", "Comforter & His return"], correct: 3 },
+        { category: "Jesus & Disciples", text: "Which apostle said he'd left all to follow Christ?", options: ["Matthew", "James", "John", "Peter"], correct: 3 },
+        { category: "Jesus & Disciples", text: "Who took Judas’s place among the twelve?", options: ["Matthias", "Stephen", "Jude", "Paul"], correct: 0 },
+        { category: "Jesus & Disciples", text: "Which apostle first suffered martyrdom?", options: ["Andrew", "Thomas", "James", "Paul"], correct: 2 },
+
+        // ---- WHO GOD IS (7) ----
+        { category: "Who God Is", text: "First words God spoke to man?", options: ["Rule the earth", "Fill the earth", "Be fruitful and multiply", "Love neighbor"], correct: 2 },
+        { category: "Who God Is", text: "Meaning of Jehovah Shammah?", options: ["Jehovah is there", "Jehovah is here", "Jehovah is near", "Jehovah is with us"], correct: 0 },
+        { category: "Who God Is", text: "How did God manifest presence at temple dedication?", options: ["Fire from heaven", "Cloud", "Rain", "Thunder"], correct: 0 },
+        { category: "Who God Is", text: "Three occasions Jesus wept?", options: ["Gethsemane/Bethlehem", "Jerusalem/Nazareth", "Lazarus/Jerusalem/Gethsemane", "Lazarus/Jerusalem/Bethlehem"], correct: 2 },
+        { category: "Who God Is", text: "First & last words of Savior on earth?", options: ["I am the Way... / Father forgive", "Why were you searching... / It is finished", "Love the Lord... / Father into your hands", "I am the Way... / It is finished"], correct: 1 },
+        { category: "Who God Is", text: "With whom did Savior spend his last Sabbath?", options: ["Apostles", "Peter, James, John", "Simon the leper", "Mark and Luke"], correct: 2 },
+        { category: "Who God Is", text: "Who is called the light of the world?", options: ["Moses", "Jesus", "John", "Abraham"], correct: 1 },
+
+        // ---- FRUIT OF FAITH (11) ----
+        { category: "Fruit of Faith", text: "When was Sabbath first instituted?", options: ["By Noah after flood", "By God after creation", "By Adam in Eden", "By Moses at commandments"], correct: 1 },
+        { category: "Fruit of Faith", text: "First confession to the Lord recorded?", options: ["Abram", "Jacob", "Adam", "Moses"], correct: 1 },
+        { category: "Fruit of Faith", text: "Who killed 600 Philistines with an ox goad?", options: ["David", "Jonathan", "Shamgar", "Samson"], correct: 2 },
+        { category: "Fruit of Faith", text: "First recorded person raised from death to life?", options: ["Tabitha", "Jesus", "Lazarus", "Son of Zarephath’s daughter"], correct: 3 },
+        { category: "Fruit of Faith", text: "Who ate meal prepared by angel, sustained 40 days?", options: ["Manoah", "Joseph", "Elijah", "Moses"], correct: 2 },
+        { category: "Fruit of Faith", text: "What is the whole duty of man?", options: ["Be fruitful", "Love enemies", "Take care of earth", "Fear God & keep commandments"], correct: 3 },
+        { category: "Fruit of Faith", text: "Three men who stood almost alone in godliness?", options: ["Abraham, Daniel, Job", "Joseph, Jacob, Daniel", "Jacob, Noah, Joseph", "Noah, Daniel, Job"], correct: 3 },
+        { category: "Fruit of Faith", text: "Who beheld vision of valley of dry bones?", options: ["Jeremiah", "Ezekiel", "Joseph", "Daniel"], correct: 1 },
+        { category: "Fruit of Faith", text: "Who was compelled to bear cross of Christ?", options: ["Joseph", "John", "Peter", "Simon"], correct: 3 },
+        { category: "Fruit of Faith", text: "Woman who continued in prayer day & night in temple?", options: ["Drusilla", "Mary", "Anna", "Lydia"], correct: 2 },
+        { category: "Fruit of Faith", text: "Who was the first Christian martyr?", options: ["Stephen", "Peter", "John", "Paul"], correct: 0 },
+
+        // ---- PUNISHMENTS (8) ----
+        { category: "Punishments & Events", text: "Who lost lives for using 'strange' fire?", options: ["Nadab & Abihu", "Jacob & Esau", "Ahab & Zedekiah", "Sisera & Barek"], correct: 0 },
+        { category: "Punishments & Events", text: "Man of Israel stoned for blasphemy?", options: ["Son of Isaac", "Methuselah", "Son of Shelomith", "Kenan"], correct: 2 },
+        { category: "Punishments & Events", text: "Three men swallowed alive in a pit?", options: ["Korah, Dathan, Hadad", "Jetur, Dathan, Abiram", "Korah, Dathan, Abiram", "Korah, Dathan, Rachab"], correct: 2 },
+        { category: "Punishments & Events", text: "What tribe had no inheritance in promised land?", options: ["Reubenites", "Levites", "Gadites", "Manassa"], correct: 1 },
+        { category: "Punishments & Events", text: "Who was punished with death for touching the ark?", options: ["Caleb", "Naaman", "Uzza", "Obed"], correct: 2 },
+        { category: "Punishments & Events", text: "Woman who murdered grandchildren and usurped kingdom?", options: ["Jezebel", "Rahab", "Athaliah", "Anna"], correct: 2 },
+        { category: "Punishments & Events", text: "Man who invited his murderer to a feast?", options: ["Jesse", "Gedaliah", "Gideon", "Dan"], correct: 1 },
+
+        // ---- WARS AND CONFLICT (4) ----
+        { category: "Wars & Conflict", text: "City taken by stratagem, burned with 12,000 women/children?", options: ["Nineveh", "Thessalonica", "Ai", "Bethel"], correct: 2 },
+        { category: "Wars & Conflict", text: "How many Philistines did Samson slay with jawbone?", options: ["1,000", "40", "666", "2,000"], correct: 0 },
+        { category: "Wars & Conflict", text: "Warrior whose hand stuck to sword hilt?", options: ["Elijah", "Jabez", "Eleazar", "Cush"], correct: 2 },
+        { category: "Wars & Conflict", text: "Who commanded largest army recorded in Bible?", options: ["Zedekiah", "Ahab", "Asa", "Amon"], correct: 2 },
+
+        // ---- PROMISE AND PRIVILEGE (3) ----
+        { category: "Promise & Privilege", text: "God promised whose children as stars in heaven?", options: ["Abraham", "Jacob", "Moses", "Jethro"], correct: 0 },
+        { category: "Promise & Privilege", text: "Of whom not of Abraham's seed did God say 'I will make him a great nation'?", options: ["Zelophehad", "Ishmael", "Esau", "Caleb"], correct: 1 },
+        { category: "Promise & Privilege", text: "Three major promises to Abraham?", options: ["Wealth,blessing,stars", "Seed, land, blessing", "Blessing,health,birthright", "Priesthood,wealth,health"], correct: 1 },
+
+        // ---- FUN FACTS (9) ----
+        { category: "Fun Facts", text: "What guarded Garden of Eden after expulsion?", options: ["Pillar of fire", "Cherubim & flaming sword", "Giant wall", "Leviathan"], correct: 1 },
+        { category: "Fun Facts", text: "First city mentioned in the Bible?", options: ["Babylon", "Nineveh", "Enoch", "Sodom"], correct: 2 },
+        { category: "Fun Facts", text: "City to which Lot escaped at destruction of Sodom?", options: ["Golon", "Zoar", "Silo", "Cabul"], correct: 1 },
+        { category: "Fun Facts", text: "How many cities given to Levites?", options: ["56", "48", "34", "99"], correct: 1 },
+        { category: "Fun Facts", text: "Two men hid in a well to save their lives?", options: ["Jonathan & Ahimaaz", "Gideon & Phurah", "Saul & Jonathan", "David & Jonathan"], correct: 0 },
+        { category: "Fun Facts", text: "Queen described as 'that wicked woman'?", options: ["Lydia", "Esther", "Athaliah", "Jezebel"], correct: 2 },
+        { category: "Fun Facts", text: "Book written without mentioning name of God?", options: ["Song of Solomon", "Esther", "Ruth", "Haggai"], correct: 1 },
+        { category: "Fun Facts", text: "Other nation besides Israel scattered to every people?", options: ["Egypt", "Lebanon", "Syria", "Elam"], correct: 3 },
+        { category: "Fun Facts", text: "First Christian convert in Europe?", options: ["Lydia", "Phoebe", "Priscilla", "Salome"], correct: 0 }
+    ];
+
+    // Application state
+    let currentIndex = 0;
+    let userSelections = new Array(QUIZ_DATA.length).fill(null);
+    let quizFinished = false;
+    let currentCategoryFilter = "all";
+
+    // Helper: get unique categories
+    function getAllCategories() {
+        const cats = [...new Set(QUIZ_DATA.map(q => q.category))];
+        return cats.sort();
+    }
+
+    function getFilteredIndices() {
+        if (currentCategoryFilter === "all") {
+            return Array.from({ length: QUIZ_DATA.length }, (_, i) => i);
+        }
+        return QUIZ_DATA.reduce((acc, q, idx) => {
+            if (q.category === currentCategoryFilter) acc.push(idx);
+            return acc;
+        }, []);
+    }
+
+    function getCurrentDisplayIndex() {
+        const filtered = getFilteredIndices();
+        return filtered[currentIndex] !== undefined ? filtered[currentIndex] : (filtered[0] ?? 0);
+    }
+
+    function getTotalFiltered() {
+        return getFilteredIndices().length;
+    }
+
+    function render() {
+        const container = document.getElementById("dynamicContent");
+        if (!container) return;
+
+        if (quizFinished) {
+            renderResultScreen(container);
+            return;
+        }
+
+        const filteredIndices = getFilteredIndices();
+        if (filteredIndices.length === 0) {
+            container.innerHTML = `<div class="quiz-body"><p class="question-text">No questions in this category.</p><button id="resetCategoryBtn" class="reset-btn">Show All Categories</button></div>`;
+            const btn = document.getElementById("resetCategoryBtn");
+            if (btn) btn.onclick = () => { currentCategoryFilter = "all"; currentIndex = 0; render(); };
+            return;
+        }
+
+        const realQIndex = filteredIndices[currentIndex];
+        const question = QUIZ_DATA[realQIndex];
+        const selectedVal = userSelections[realQIndex];
+        const totalFiltered = filteredIndices.length;
+        const answeredCount = userSelections.filter((val, idx) => val !== null && filteredIndices.includes(idx)).length;
+
+        // Build options
+        let optionsHtml = "";
+        question.options.forEach((opt, optIdx) => {
+            const isChecked = (selectedVal === optIdx);
+            optionsHtml += `
+                <li class="option-item" data-opt-index="${optIdx}">
+                    <input type="radio" name="qOption" id="opt_${optIdx}" value="${optIdx}" class="option-radio" ${isChecked ? "checked" : ""}>
+                    <label for="opt_${optIdx}" class="option-text">${escapeHtml(opt)}</label>
+                </li>
+            `;
+        });
+
+        const progressPercent = ((currentIndex + 1) / totalFiltered) * 100;
+        const scoreSoFar = userSelections.reduce((acc, sel, idx) => {
+            if (sel !== null && sel === QUIZ_DATA[idx].correct && filteredIndices.includes(idx)) acc++;
+            return acc;
+        }, 0);
+
+        const categories = getAllCategories();
+        const catOptions = categories.map(cat => `<option value="${cat}" ${currentCategoryFilter === cat ? "selected" : ""}>${cat}</option>`).join("");
+
+        const html = `
+            <div class="stats-bar">
+                <span class="category-badge">📖 ${question.category}</span>
+                <span class="score-badge">✅ Score: ${scoreSoFar} / ${totalFiltered}</span>
+            </div>
+            <div class="progress-container"><div class="progress-fill" style="width: ${progressPercent}%;"></div></div>
+            <div class="quiz-body">
+                <div class="category-selector">
+                    <span>🏷️ Filter by category:</span>
+                    <select id="categorySelect">
+                        <option value="all">📚 All Categories</option>
+                        ${catOptions}
+                    </select>
+                    <button id="resetProgressBtn" class="reset-btn">⟳ Reset All</button>
+                </div>
+                <div class="question-text">${escapeHtml(question.text)}</div>
+                <ul class="options-list" id="optionsList">
+                    ${optionsHtml}
+                </ul>
+                <div class="nav-buttons">
+                    <button id="prevBtn" ${currentIndex === 0 ? "disabled" : ""}>◀ Previous</button>
+                    <button id="nextBtn" class="primary">${currentIndex === totalFiltered - 1 ? "Finish Quiz" : "Next ▶"}</button>
+                </div>
+            </div>
+        `;
+
+        container.innerHTML = html;
+
+        // attach events
+        const radios = document.querySelectorAll('input[name="qOption"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const selected = parseInt(e.target.value);
+                userSelections[realQIndex] = selected;
+                render(); // re-render to show updated progress
+            });
+        });
+
+        const optionItems = document.querySelectorAll('.option-item');
+        optionItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT') {
+                    const radio = item.querySelector('.option-radio');
+                    if (radio) {
+                        radio.checked = true;
+                        radio.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                }
+            });
+        });
+
+        document.getElementById('prevBtn')?.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                render();
+            }
+        });
+        document.getElementById('nextBtn')?.addEventListener('click', () => {
+            if (currentIndex === totalFiltered - 1) {
+                quizFinished = true;
+                render();
+            } else {
+                if (currentIndex < totalFiltered - 1) {
+                    currentIndex++;
+                    render();
+                }
+            }
+        });
+        document.getElementById('categorySelect')?.addEventListener('change', (e) => {
+            currentCategoryFilter = e.target.value;
+            currentIndex = 0;
+            render();
+        });
+        document.getElementById('resetProgressBtn')?.addEventListener('click', () => {
+            userSelections = new Array(QUIZ_DATA.length).fill(null);
+            currentIndex = 0;
+            quizFinished = false;
+            render();
+        });
+    }
+
+    function renderResultScreen(container) {
+        const filteredIndices = getFilteredIndices();
+        let totalPossible = filteredIndices.length;
+        let correctCount = 0;
+        for (let idx of filteredIndices) {
+            if (userSelections[idx] !== null && userSelections[idx] === QUIZ_DATA[idx].correct) correctCount++;
+        }
+        const percent = Math.round((correctCount / totalPossible) * 100);
+        let message = "";
+        if (percent === 100) message = "🌟 Perfect! You truly know the Word! 🌟";
+        else if (percent >= 80) message = "📖 Excellent! A student of Scripture!";
+        else if (percent >= 60) message = "👍 Good effort! Keep studying God's Word.";
+        else message = "🌱 Keep reading your Bible — growth comes with time!";
+
+        const categories = getAllCategories();
+        const catOptions = categories.map(cat => `<option value="${cat}" ${currentCategoryFilter === cat ? "selected" : ""}>${cat}</option>`).join("");
+
+        const html = `
+            <div class="stats-bar"><span>🏆 Quiz Complete 🏆</span><span>📊 ${correctCount}/${totalPossible}</span></div>
+            <div class="quiz-body result-area">
+                <div class="category-selector">
+                    <span>🏷️ Category:</span>
+                    <select id="resultCategorySelect">
+                        <option value="all">📚 All Categories</option>
+                        ${catOptions}
+                    </select>
+                    <button id="restartFromResultBtn" class="reset-btn">⟳ New Quiz</button>
+                </div>
+                <div class="final-score-circle">${correctCount} / ${totalPossible}</div>
+                <div style="font-size:1.3rem;">${percent}% accuracy</div>
+                <div class="message-final">${message}</div>
+                <button id="retakeBtn" class="primary" style="padding:0.8rem 2rem;">📖 Take Quiz Again</button>
+            </div>
+        `;
+        container.innerHTML = html;
+
+        document.getElementById("resultCategorySelect")?.addEventListener('change', (e) => {
+            currentCategoryFilter = e.target.value;
+            currentIndex = 0;
+            quizFinished = false;
+            render();
+        });
+        document.getElementById("restartFromResultBtn")?.addEventListener('click', () => {
+            userSelections = new Array(QUIZ_DATA.length).fill(null);
+            currentIndex = 0;
+            quizFinished = false;
+            render();
+        });
+        document.getElementById("retakeBtn")?.addEventListener('click', () => {
+            userSelections = new Array(QUIZ_DATA.length).fill(null);
+            currentIndex = 0;
+            quizFinished = false;
+            render();
+        });
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // start
+    render();
+</script>
+</body>
+</html>
