@@ -3,94 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FaithBase — Bible Quiz, Free Courses, Church Directory, Daily Bread, and 50 Men of God">
-    <title>FaithBase | Pentecostal & Evangelical Discipleship Platform</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>FaithBase | Bible Quiz & Christian Platform</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <header class="main-header">
-            <div class="container">
-                <div class="logo">
-                    <span class="cross">✝️</span>
-                    <h1>Faith<span>Base</span></h1>
-                    <p class="tagline">Rooted in Scripture | Pentecostal Heritage</p>
-                </div>
-                <nav class="main-nav">
-                    <button class="nav-link active" data-page="quiz">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        Bible Quiz
-                    </button>
-                    <button class="nav-link" data-page="courses">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-                        Free Courses
-                    </button>
-                    <button class="nav-link" data-page="churches">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        Church Directory
-                    </button>
-                    <button class="nav-link" data-page="reading">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                        Daily Bread
-                    </button>
-                    <button class="nav-link" data-page="men">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        50 Men of God
-                    </button>
-                </nav>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            </div>
-        </header>
+    <nav class="navbar">
+        <div class="logo">✝️ Faith<span>Base</span></div>
+        <div class="nav-menu">
+            <button class="nav-item active" data-page="quiz">📖 Bible Quiz</button>
+            <button class="nav-item" data-page="courses">📚 Free Courses</button>
+            <button class="nav-item" data-page="churches">⛪ Church Directory</button>
+            <button class="nav-item" data-page="reading">🍞 Daily Bread</button>
+            <button class="nav-item" data-page="men">👑 50 Men of God</button>
+        </div>
+        <button class="mobile-btn" id="mobileBtn">☰</button>
+    </nav>
 
-        <main id="main-content">
-            <div class="container">
-                <div id="page-container"></div>
-            </div>
-        </main>
+    <main class="container">
+        <div id="quizPage" class="page active"></div>
+        <div id="coursesPage" class="page"></div>
+        <div id="churchesPage" class="page"></div>
+        <div id="readingPage" class="page"></div>
+        <div id="menPage" class="page"></div>
+    </main>
 
-        <footer class="main-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h4>FaithBase</h4>
-                        <p>Equipping believers with the Word of God through interactive tools and resources.</p>
-                        <p class="doctrine">📖 Pentecostal • Evangelical • Sola Scriptura</p>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#" data-page="quiz">Bible Quiz</a></li>
-                            <li><a href="#" data-page="courses">Free Courses</a></li>
-                            <li><a href="#" data-page="churches">Find a Church</a></li>
-                            <li><a href="#" data-page="reading">Reading Plan</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Statement of Faith</h4>
-                        <p>We believe in the Trinity, the deity of Christ, the baptism of the Holy Spirit with evidence of speaking in tongues, and the imminent return of Jesus.</p>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2024 FaithBase — All content rooted in Scripture | <a href="#" id="resetAllData">Reset All Progress</a></p>
-                </div>
-            </div>
-        </footer>
-    </div>
+    <footer class="footer">
+        <p>© 2024 FaithBase — Rooted in Scripture | Pentecostal Heritage | Soli Deo Gloria</p>
+    </footer>
 
-    <!-- Scripts -->
-    <script src="data/quiz-questions.js"></script>
-    <script src="data/courses-data.js"></script>
-    <script src="data/churches-data.js"></script>
-    <script src="data/reading-plan.js"></script>
-    <script src="data/men-data.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/quiz.js"></script>
-    <script src="js/courses.js"></script>
-    <script src="js/churches.js"></script>
-    <script src="js/reading.js"></script>
-    <script src="js/men.js"></script>
-    <script src="js/app.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
